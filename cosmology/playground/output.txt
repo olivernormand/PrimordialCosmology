@@ -1,0 +1,18 @@
+['x1', 'x2', 'y0', 'y1', 'y2', 'y3']
+{'x1': {'prior': {'min': 0, 'max': 1}}, 'x2': {'prior': {'min': 0, 'max': 1}}, 'x3': {'prior': {'min': 0, 'max': 1}}, 'y0': {'prior': {'min': -2, 'max': 2}}, 'y1': {'prior': {'min': -2, 'max': 2}}, 'y2': {'prior': {'min': -2, 'max': 2}}, 'y3': {'prior': {'min': -2, 'max': 2}}}
+[output] Output to be read-from/written-into folder 'chains', with prefix 'model_comparison'
+[output] Found existing info files with the requested output prefix: 'chains/model_comparison'
+[input] is_equal_info: different content of [sampler:polychord] -- (re-run with `debug: True` for more info)
+[sampler] *ERROR* Found old Sampler information which is not compatible with the new one. Delete the previous output manually, or automatically with either '-f', '--force', 'force: True'
+[exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "playground.py", line 113, in <module>
+    updated_info, sampler = run(info)
+  File "/home/ocn22/environments/cobaya_env/env/lib/python3.8/site-packages/cobaya/run.py", line 126, in run
+    check_sampler_info(
+  File "/home/ocn22/environments/cobaya_env/env/lib/python3.8/site-packages/cobaya/sampler.py", line 124, in check_sampler_info
+    raise LoggedError(
+cobaya.log.LoggedError: Found old Sampler information which is not compatible with the new one. Delete the previous output manually, or automatically with either '-f', '--force', 'force: True'
+-------------------------------------------------------------
+
