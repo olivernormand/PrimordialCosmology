@@ -1,0 +1,5 @@
+sampler:
+  polychord:
+    path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
+
+output: chains/model_comparison

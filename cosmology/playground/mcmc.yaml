@@ -1,0 +1,6 @@
+sampler:
+  mcmc:
+    Rminus1_stop: 0.01
+    max_tries: 2500
+
+output: chains/model_comparison
