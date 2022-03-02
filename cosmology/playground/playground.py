@@ -56,7 +56,7 @@ def my_prior(x1, x2):
     x = np.any(x)
 
     if x:
-        return -300
+        return -1e30
     else:
         return 0
 
