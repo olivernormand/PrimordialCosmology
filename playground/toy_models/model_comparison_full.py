@@ -159,7 +159,7 @@ class ModelLikelihood():
         # And now we check for nan, so if nan, then we say this is very unlikely indeed
         # Note we've already checked earlier to make sure that the x coordinates aren't too finely spaced, so this should go some way to resolving this.
         if np.isnan(logL):
-            return -300.0, []
+            return -1e30, []
         return logL, []
 
     def old__call__(self, theta):

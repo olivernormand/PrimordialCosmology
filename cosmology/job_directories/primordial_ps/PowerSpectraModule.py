@@ -1,28 +1,5 @@
 import numpy as np
-from cobaya.theory import Theory
-from helper_functions import plf
 
-
-class FeaturePrimordialPk(Theory):
-    """
-        Theory class producing a slow-roll-like power spectrum with an enveloped,
-        linearly-oscillatory feture on top.
-    """
-
-    params_list, params = get_params_from_nDims(nDims)
-
-    def initialize(self):
-        self.ks = np.logspace(-4, -0.3, 1000)
-
-    def calculate(self, state, want_derived=True, **params_values_dict):
-
-        params_values = [params_values_dict[p] for p in params_list]
-        ks, Pks = feature_power_spectrum(self.ks, params_values)
-        state['primordial_scalar_pk'] = {
-            'k': ks, 'Pk': Pks, 'log_regular': False}
-
-    def get_primordial_scalar_pk(self):
-        return self.current_state['primordial_scalar_pk']
 
 def plf(x, theta):
     nDims = len(theta)
@@ -62,13 +39,12 @@ def get_input_params(nDims):
         input_params.append('y' + str(i))
     return input_params
 
-def get_input_params_dict(nDims, xlim, ylim):
+def get_input_params_dict(nDims, xlim, ylim, info_params = {}):
     xmin, xmax = xlim
     ymin, ymax = ylim
 
     assert nDims % 2 == 0
     nPoints = (nDims + 2) // 2
-    info_params = {}
 
     x_proposal = np.linspace(0, 1, nPoints + 2)
     x_proposal = x_proposal[1:-1]
@@ -87,7 +63,7 @@ def return_prior(nDims):
         x_string += 'x{}, '.format(i)
     x_string = x_string[:-2]
 
-    string = 'lambda ' + x_string + ' : -300 if np.any(np.less_equal(np.diff(np.array([' + x_string + '])), 0)) else 0'
+    string = 'lambda ' + x_string + ' : -1e30 if np.any(np.less_equal(np.diff(np.array([' + x_string + '])), 0)) else 0'
 
     return eval(string)
 
@@ -115,10 +91,3 @@ def power_spectra(ks, theta):
     Pks = 1e-10 * np.exp(lntentenPks)
 
     return ks, Pks
-
-def get_params_list_dict(self):
-
-    
-
-
-
