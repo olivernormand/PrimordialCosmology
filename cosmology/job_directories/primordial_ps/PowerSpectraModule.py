@@ -1,10 +1,11 @@
 import numpy as np
 
 
-def plf(x, theta):
+def plf(x, theta, xlim = [-4, -0.3]):
+    x_lower, x_upper = xlim
     nDims = len(theta)
     node_x = np.concatenate(
-        [np.array([0]), theta[:nDims//2 - 1], np.array([1])])
+        [np.array([x_lower]), theta[:nDims//2 - 1], np.array([x_upper])])
     node_y = theta[nDims//2 - 1:]
 
     N = len(node_x)
@@ -83,11 +84,13 @@ def get_params_from_nDims(nDims):
 
     return params_list, params_dict
 
-def power_spectra(ks, theta):
+def power_spectra(ks, theta, xlim):
     log10ks = np.log10(ks)
 
-    lntentenPks = plf(log10ks, theta)
+    lntentenPks = plf(log10ks, theta, xlim = xlim)
 
     Pks = 1e-10 * np.exp(lntentenPks)
+
+    # print('printing', np.mean(log10ks), np.mean(lntentenPks), np.mean(ks), np.mean(Pks))
 
     return ks, Pks

@@ -4,7 +4,7 @@ from cobaya.theory import Theory
 from PowerSpectraModule import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra
 import numpy as np
 
-nDims = 4
+nDims = 2
 xlim = [-4, -0.3]
 ylim = [2, 4]
 yaml_filename = 'camb.yaml'
@@ -24,7 +24,7 @@ class FeaturePrimordialPk(Theory):
     def calculate(self, state, want_derived=True, **params_values_dict):
 
         params_values = [params_values_dict[p] for p in self.params_list]
-        ks, Pks = power_spectra(self.ks, params_values)
+        ks, Pks = power_spectra(self.ks, params_values, xlim = xlim)
         state['primordial_scalar_pk'] = {
             'k': ks, 'Pk': Pks, 'log_regular': False}
 
@@ -43,6 +43,4 @@ info['prior'] = info_prior
 info['params'] = info_params
 info['theory'] = info_theory
 
-
-
-updated_info, sampler = run(info, test = True, debug = True)
+updated_info, sampler = run(info)

@@ -39,3 +39,6 @@
 /slurm_submit.peta4-cclake
 /slurm_submit.wilkes2
 /slurm_submit.wilkes3
+playground/toy_models/.gitignore
+.gitignore
+playground/toy_models/.gitignore

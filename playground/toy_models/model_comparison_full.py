@@ -125,7 +125,7 @@ class ModelLikelihood():
         dx = np.diff(node_x)
         dx_less = np.less_equal(dx, 1e-5)
         if np.any(dx_less):
-            return -300.0, []
+            return -1e30, []
         # And if that's all fine, then we can return to working out the actual likelihood
         m, c = self.nodes_to_line(node_x, node_y)
 
@@ -406,7 +406,7 @@ if __name__ == '__main__':
     nLive = 400
     method = ['Line', 'Sin']
     N = 50
-    sigma = 0.025
+    sigma = 0.05
     seed = 2
 
     run = ModelComparisonRun(nDims, nDerived, nLive, method, N, sigma, seed, plotting = True)
