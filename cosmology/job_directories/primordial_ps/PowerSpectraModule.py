@@ -3,6 +3,16 @@ from fgivenx import plot_contours, samples_from_getdist_chains
 import matplotlib.pyplot as plt
 
 def plf(x, theta, xlim = [-4, -0.3]):
+    """
+        Return the piecewise linear function defined by a set of parameters theta
+
+        theta represents the x coordinates of all but the edge points, and the y coordinates of those same points. 
+        The x coordinates of the edge points do not need to be included. 
+
+        x represents the values over which you wish the function to be evaluated. 
+
+    """
+
     x_lower, x_upper = xlim
     nDims = len(theta)
     node_x = np.concatenate([np.array([x_lower]), theta[:nDims//2 - 1], np.array([x_upper])])
@@ -95,23 +105,21 @@ def power_spectra(ks, theta, xlim):
 
     return ks, Pks
 
-
-def generate_plot(file_root, nDims, xlim, title=None, plot_function=None):
-
+def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
     params_list, _ = get_params_from_nDims(nDims)
 
     samples, weights = samples_from_getdist_chains(params_list, file_root)
 
-    x = np.linspace(-5, 1, 1000)
+    x = np.linspace(xlim[0], xlim[1], 200)
 
     fig, axs = plt.subplots()
-    cbar = plot_contours(plf, x, samples, axs, weights=weights)
+    cbar = plot_contours(plf, x, samples, axs, weights=weights, ny = 500)
     cbar = plt.colorbar(cbar, ticks=[0, 1, 2, 3])
     cbar.set_ticklabels(['', r'$1\sigma$', r'$2\sigma$', r'$3\sigma$'])
 
     if title:
         axs.set_title(title)
-    axs.set_ylim([1, 5])
+    axs.set_ylim(ylim)
     axs.set_ylabel('y')
     axs.set_xlabel('x')
 
@@ -119,4 +127,28 @@ def generate_plot(file_root, nDims, xlim, title=None, plot_function=None):
         axs.plot(x, plot_function(x), 'g')
 
     fig.tight_layout()
-    plt.savefig(file_root + '.png')
+    plt.savefig('output.png')
+
+def true_power_spectra(x):
+    """
+        Returns the true power spectra using theoretical values of the As and ns to calculate the power spectra in this plane
+    """
+    y0 = 3.2552
+    y1 = 2.970
+    x0 = -4
+    x1 = -0.3
+
+    dx = x1 - x0 
+    dy = y1 - y0 
+    m = dy / dx 
+
+    return m * x + y0 - m * x0
+
+def update_output(info, nDims):
+    try:
+        new_output = info['output'] + '_nDims' + \
+            str(nDims) + 'nLive' + str(info['sampler']['polychord']['nlive'])
+    except KeyError:
+        new_output = info['output'] + '_nDims' + str(nDims)
+
+    return new_output
