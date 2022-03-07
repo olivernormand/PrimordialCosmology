@@ -10,7 +10,7 @@
 
 #! sbatch directives begin here ###############################
 #! Name of the job:
-#SBATCH -J primordial_ps_ndims6
+#SBATCH -J primordial_ps_ndims6_fixedtau
 #! Which project should be charged:
 #SBATCH -A HANDLEY-SL3-CPU
 #SBATCH -p cclake
@@ -66,10 +66,10 @@ source /home/ocn22/environments/cobaya_env/env/bin/activate
 application="/home/ocn22/environments/cobaya_env/env/bin/python"
 
 #! Run options for the application:
-options="/home/ocn22/cosmology/job_directories/primordial_ps/run.py"
+options="/home/ocn22/cosmology/job_directories/primordial_ps_dev/run.py"
 
 #! Work directory (i.e. where the job will run):
-workdir="/home/ocn22/cosmology/job_directories/primordial_ps"  # The value of SLURM_SUBMIT_DIR sets workdir to the directory
+workdir="/home/ocn22/cosmology/job_directories/primordial_ps_dev"  # The value of SLURM_SUBMIT_DIR sets workdir to the directory
                              # in which sbatch is run.
 #! Are you using OpenMP (NB this is unrelated to OpenMPI)? If so increase this
 #! safe value to no more than 56:

@@ -95,23 +95,24 @@ def power_spectra(ks, theta, xlim):
 
     return ks, Pks
 
-
-def generate_plot(file_root, nDims, xlim, title=None, plot_function=None):
+def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
+    x_lower, x_upper = xlim 
+    y_lower, y_upper = ylim
 
     params_list, _ = get_params_from_nDims(nDims)
-
+    
     samples, weights = samples_from_getdist_chains(params_list, file_root)
 
-    x = np.linspace(-5, 1, 1000)
+    x = np.linspace(x_lower, x_upper, 1000)
 
     fig, axs = plt.subplots()
     cbar = plot_contours(plf, x, samples, axs, weights=weights)
-    cbar = plt.colorbar(cbar, ticks=[0, 1, 2, 3])
-    cbar.set_ticklabels(['', r'$1\sigma$', r'$2\sigma$', r'$3\sigma$'])
+    cbar = plt.colorbar(cbar, ticks=[0, 1,2,3])
+    cbar.set_ticklabels(['', r'$1\sigma$', r'$2\sigma$',r'$3\sigma$'])
 
     if title:
         axs.set_title(title)
-    axs.set_ylim([1, 5])
+    axs.set_ylim(ylim)
     axs.set_ylabel('y')
     axs.set_xlabel('x')
 
@@ -120,3 +121,11 @@ def generate_plot(file_root, nDims, xlim, title=None, plot_function=None):
 
     fig.tight_layout()
     plt.savefig(file_root + '.png')
+
+def update_output(info, nDims):
+    try: 
+        new_output = info['output'] + '_nDims' + str(nDims) + 'nLive' + str(info['sampler']['polychord']['nlive'])
+    except KeyError:
+        new_output = info['output'] + '_nDims' + str(nDims)
+
+    return new_output

@@ -1,323 +1,207 @@
- 2022-03-02 23:13:43,664 [output] Creating output folder 'chains'
- 2022-03-02 23:13:43,670 [output] Output to be read-from/written-into folder 'chains', with prefix 'lensed'
- 2022-03-02 23:13:43,863 [input] Parameter 'A_planck' is multiply defined but consistent.
- 2022-03-02 23:13:43,863 [input] Parameter 'A_planck' is multiply defined but consistent.
- 2022-03-02 23:13:43,863 [input] Parameter 'A_planck' is multiply defined but consistent.
- 2022-03-02 23:13:44,008 [output] Deleting folder 'chains/lensed_polychord_raw'
- 2022-03-02 23:13:44,009 [output] Deleting folder 'chains/lensed_clusters'
- 2022-03-02 23:13:44,070 [prior] Loading external prior 'my_prior' from: '<function <lambda> at 0x2abcebd853a0>'
- 2022-03-02 23:13:44,070 [prior] *WARNING* External prior 'my_prior' loaded. Mind that it might not be normalized!
- 2022-03-02 23:13:44,070 [prior] Loading external prior 'SZ' from: 'lambda ksz_norm, A_sz: stats.norm.logpdf(ksz_norm+1.6*A_sz, loc=9.5, scale=3.0)'
- 2022-03-02 23:13:44,072 [prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
- 2022-03-02 23:13:44,078 [CAMB] Importing *auto-installed* CAMB (but defaulting to *global*).
- 2022-03-02 23:13:44,166 [camb] Initialized!
- 2022-03-02 23:13:44,171 [clik] Importing *auto-installed* clik (but defaulting to *global*).
- 2022-03-02 23:13:44,476 [planck_2018_lowl.tt] Initialized!
- 2022-03-02 23:13:44,478 [clik] Importing *auto-installed* clik (but defaulting to *global*).
- 2022-03-02 23:13:44,483 [planck_2018_lowl.ee] Initialized!
- 2022-03-02 23:13:44,485 [clik] Importing *auto-installed* clik (but defaulting to *global*).
- 2022-03-02 23:13:44,741 [planck_2018_highl_plik.ttteee] Initialized!
- 2022-03-02 23:13:44,742 [clik] Importing *auto-installed* clik (but defaulting to *global*).
- 2022-03-02 23:13:44,752 [planck_2018_lensing.clik] Initialized!
- 2022-03-02 23:13:44,755 [model] Parameters were assigned as follows:
- 2022-03-02 23:13:44,755 [model] - planck_2018_lowl.TT:
- 2022-03-02 23:13:44,755 [model]      Input:  ['A_planck']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - planck_2018_lowl.EE:
- 2022-03-02 23:13:44,755 [model]      Input:  ['A_planck']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - planck_2018_highl_plik.TTTEEE:
- 2022-03-02 23:13:44,755 [model]      Input:  ['A_planck', 'calib_100T', 'calib_217T', 'A_pol', 'calib_100P', 'calib_143P', 'calib_217P', 'cib_index', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'A_sbpx_100_100_TT', 'A_sbpx_143_143_TT', 'A_sbpx_143_217_TT', 'A_sbpx_217_217_TT', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_index', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217', 'galf_EE_index', 'galf_EE_A_100', 'galf_EE_A_100_143', 'galf_EE_A_100_217', 'galf_EE_A_143', 'galf_EE_A_143_217', 'galf_EE_A_217', 'A_cnoise_e2e_100_100_EE', 'A_cnoise_e2e_143_143_EE', 'A_cnoise_e2e_217_217_EE', 'A_sbpx_100_100_EE', 'A_sbpx_100_143_EE', 'A_sbpx_100_217_EE', 'A_sbpx_143_143_EE', 'A_sbpx_143_217_EE', 'A_sbpx_217_217_EE']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - planck_2018_lensing.clik:
- 2022-03-02 23:13:44,755 [model]      Input:  ['A_planck']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - my_theory:
- 2022-03-02 23:13:44,755 [model]      Input:  ['x1', 'y0', 'y1', 'y2']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - camb.transfers:
- 2022-03-02 23:13:44,755 [model]      Input:  ['H0', 'ombh2', 'omch2', 'mnu', 'tau']
- 2022-03-02 23:13:44,755 [model]      Output: []
- 2022-03-02 23:13:44,755 [model] - camb:
- 2022-03-02 23:13:44,756 [model]      Input:  []
- 2022-03-02 23:13:44,756 [model]      Output: []
- 2022-03-02 23:13:44,760 [model] Components will be computed in the order:
- 2022-03-02 23:13:44,760 [model]  - [my_theory, camb.transfers, camb, planck_2018_lowl.TT, planck_2018_lowl.EE, planck_2018_highl_plik.TTTEEE, planck_2018_lensing.clik]
- 2022-03-02 23:13:44,760 [model] Requirements will be calculated by these components:
- 2022-03-02 23:13:44,760 [model] - Cl: camb
- 2022-03-02 23:13:44,760 [model] - CAMB_transfers: camb.transfers
- 2022-03-02 23:13:44,760 [model] - primordial_scalar_pk: my_theory
- 2022-03-02 23:13:44,817 [polychord] Importing *local* PolyChord from '/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite'.
- 2022-03-02 23:13:44,833 [polychord] Storing raw PolyChord output in 'chains/lensed_polychord_raw'.
- 2022-03-02 23:13:44,834 [model] Measuring speeds... (this may take a few seconds)
- 2022-03-02 23:13:44,837 [prior] Evaluating prior at array([ 6.72094166e+01,  2.24139657e-02,  1.20235197e-01,  5.39888773e-02,
-       -7.74581148e-01,  3.55923765e+00,  3.20737264e+00,  2.90117694e+00,
-        1.00205151e+00,  1.00222302e+00,  9.99210379e-01,  5.92862423e+01,
-        9.68086394e-02,  6.79907256e+00,  3.40045653e+00,  7.33576794e+00,
-        6.76698998e+00,  2.04365792e+01,  8.82794485e+01,  2.46367688e+02,
-        4.23074833e+01,  4.51028722e+01,  9.52724372e+01,  2.19766691e-01,
-        2.70709275e-01,  3.60879211e-01,  1.12182254e-01,  6.33733839e-01,
-        1.64407239e+00])
- 2022-03-02 23:13:44,838 [prior] Got logpriors = -42.318525034709324
- 2022-03-02 23:13:44,838 [model] Got input parameters: {'H0': 67.20941657702984, 'ombh2': 0.02241396566337511, 'omch2': 0.12023519686691661, 'mnu': 0.06, 'tau': 0.05398887734654881, 'x1': -0.7745811479423854, 'y0': 3.559237652505136, 'y1': 3.2073726398717675, 'y2': 2.901176941753238, 'A_planck': 1.0020515099137826, 'calib_100T': 1.0022230248147599, 'calib_217T': 0.9992103792433256, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 59.28624233694474, 'xi_sz_cib': 0.09680863944383311, 'A_sz': 6.799072558506473, 'ksz_norm': 3.4004565296140044, 'gal545_A_100': 7.33576793721364, 'gal545_A_143': 6.766989982424059, 'gal545_A_143_217': 20.436579216272584, 'gal545_A_217': 88.27944853379151, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 246.36768841389767, 'ps_A_143_143': 42.307483344025755, 'ps_A_143_217': 45.102872151415454, 'ps_A_217_217': 95.2724371708944, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.2197666909418925, 'galf_TE_A_100_143': 0.2707092746163975, 'galf_TE_A_100_217': 0.36087921086873115, 'galf_TE_A_143': 0.11218225447000336, 'galf_TE_A_143_217': 0.6337338391165733, 'galf_TE_A_217': 1.6440723929658199, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:13:44,838 [my_theory] Got parameters {'x1': -0.7745811479423854, 'y0': 3.559237652505136, 'y1': 3.2073726398717675, 'y2': 2.901176941753238}
- 2022-03-02 23:13:44,838 [my_theory] Computing new state
- 2022-03-02 23:13:44,838 [my_theory] First evaluation time: 0.000294403 s
- 2022-03-02 23:13:44,838 [my_theory] Average evaluation time: 0.000294403 s
- 2022-03-02 23:13:44,839 [camb.transfers] Got parameters {'H0': 67.20941657702984, 'ombh2': 0.02241396566337511, 'omch2': 0.12023519686691661, 'mnu': 0.06, 'tau': 0.05398887734654881}
- 2022-03-02 23:13:44,839 [camb.transfers] Computing new state
- 2022-03-02 23:13:44,839 [camb] Setting parameters: {'H0': 67.20941657702984, 'ombh2': 0.02241396566337511, 'omch2': 0.12023519686691661, 'mnu': 0.06, 'tau': 0.05398887734654881} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:13:44,846 [camb] Setting attributes of CAMBparams: {'Want_CMB': True, 'Want_cl_2D_array': False, 'WantCls': True, 'NonLinear': 'NonLinear_lens'}
- 2022-03-02 23:13:48,779 [camb.transfers] First evaluation time: 3.94037 s
- 2022-03-02 23:13:48,780 [camb.transfers] Average evaluation time: 3.94037 s
- 2022-03-02 23:13:48,780 [camb] Got parameters {}
- 2022-03-02 23:13:48,780 [camb] Computing new state
- 2022-03-02 23:13:53,258 [camb] Computation of cosmological products failed. Assigning 0 likelihood and going on. The output of the CAMB error was HMCode INTEGRATE, Integration timed out
- 2022-03-02 23:13:53,258 [model] Calculation failed, skipping rest of calculations 
- 2022-03-02 23:13:53,262 [prior] Evaluating prior at array([ 6.71492930e+01,  2.24129422e-02,  1.19644804e-01,  5.56579790e-02,
-       -2.20379650e+00,  2.53817198e+00,  3.66386952e+00,  2.66778641e+00,
-        9.97024743e-01,  1.00183798e+00,  9.96783641e-01,  6.04932658e+01,
-        8.83493931e-02,  4.21208756e+00,  6.64867025e-01,  5.78836559e+00,
-        8.12835300e+00,  2.89403743e+01,  7.09188897e+01,  2.53949265e+02,
-        4.47417378e+01,  2.12934937e+01,  9.46592820e+01,  2.92901584e-01,
-        1.68700295e-01,  3.32501132e-01,  1.55109632e-01,  5.46282790e-01,
-        1.70464580e+00])
- 2022-03-02 23:13:53,263 [prior] Got logpriors = -40.93661809393176
- 2022-03-02 23:13:53,264 [model] Got input parameters: {'H0': 67.14929301728097, 'ombh2': 0.022412942164868953, 'omch2': 0.1196448042516181, 'mnu': 0.06, 'tau': 0.055657979017301885, 'x1': -2.203796502897582, 'y0': 2.5381719837630508, 'y1': 3.663869521856482, 'y2': 2.667786410581705, 'A_planck': 0.9970247426535733, 'calib_100T': 1.0018379844664798, 'calib_217T': 0.9967836407159989, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 60.49326581321593, 'xi_sz_cib': 0.08834939311302714, 'A_sz': 4.21208755609655, 'ksz_norm': 0.6648670254310092, 'gal545_A_100': 5.78836559444561, 'gal545_A_143': 8.128353001895336, 'gal545_A_143_217': 28.940374328935203, 'gal545_A_217': 70.91888969857575, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 253.94926510034063, 'ps_A_143_143': 44.74173780812774, 'ps_A_143_217': 21.2934936951967, 'ps_A_217_217': 94.65928204849925, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.29290158408711364, 'galf_TE_A_100_143': 0.16870029542656453, 'galf_TE_A_100_217': 0.33250113203121456, 'galf_TE_A_143': 0.1551096318004332, 'galf_TE_A_143_217': 0.5462827902239877, 'galf_TE_A_217': 1.704645802360448, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:13:53,264 [my_theory] Got parameters {'x1': -2.203796502897582, 'y0': 2.5381719837630508, 'y1': 3.663869521856482, 'y2': 2.667786410581705}
- 2022-03-02 23:13:53,264 [my_theory] Computing new state
- 2022-03-02 23:13:53,264 [my_theory] Average evaluation time: 0.000428201 s
- 2022-03-02 23:13:53,264 [camb.transfers] Got parameters {'H0': 67.14929301728097, 'ombh2': 0.022412942164868953, 'omch2': 0.1196448042516181, 'mnu': 0.06, 'tau': 0.055657979017301885}
- 2022-03-02 23:13:53,264 [camb.transfers] Computing new state
- 2022-03-02 23:13:53,265 [camb] Setting parameters: {'H0': 67.14929301728097, 'ombh2': 0.022412942164868953, 'omch2': 0.1196448042516181, 'mnu': 0.06, 'tau': 0.055657979017301885} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:13:57,161 [camb.transfers] Average evaluation time: 3.89645 s
- 2022-03-02 23:13:57,162 [camb] Got parameters {}
- 2022-03-02 23:13:57,162 [camb] Computing new state
- 2022-03-02 23:13:59,837 [camb] First evaluation time: 2.67462 s
- 2022-03-02 23:13:59,837 [camb] Average evaluation time: 2.67462 s
- 2022-03-02 23:13:59,837 [planck_2018_lowl.tt] Got parameters {'A_planck': 0.9970247426535733}
- 2022-03-02 23:13:59,837 [planck_2018_lowl.tt] Computing new state
- 2022-03-02 23:13:59,838 [planck_2018_lowl.tt] Computed log-likelihood = -inf
- 2022-03-02 23:13:59,838 [planck_2018_lowl.tt] First evaluation time: 0.00129117 s
- 2022-03-02 23:13:59,838 [planck_2018_lowl.tt] Average evaluation time: 0.00129117 s
- 2022-03-02 23:13:59,838 [planck_2018_lowl.ee] Got parameters {'A_planck': 0.9970247426535733}
- 2022-03-02 23:13:59,838 [planck_2018_lowl.ee] Computing new state
- 2022-03-02 23:13:59,839 [planck_2018_lowl.ee] Computed log-likelihood = -204.622
- 2022-03-02 23:13:59,839 [planck_2018_lowl.ee] First evaluation time: 0.000560108 s
- 2022-03-02 23:13:59,839 [planck_2018_lowl.ee] Average evaluation time: 0.000560108 s
- 2022-03-02 23:13:59,839 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 0.9970247426535733, 'calib_100T': 1.0018379844664798, 'calib_217T': 0.9967836407159989, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 60.49326581321593, 'xi_sz_cib': 0.08834939311302714, 'A_sz': 4.21208755609655, 'ksz_norm': 0.6648670254310092, 'gal545_A_100': 5.78836559444561, 'gal545_A_143': 8.128353001895336, 'gal545_A_143_217': 28.940374328935203, 'gal545_A_217': 70.91888969857575, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 253.94926510034063, 'ps_A_143_143': 44.74173780812774, 'ps_A_143_217': 21.2934936951967, 'ps_A_217_217': 94.65928204849925, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.29290158408711364, 'galf_TE_A_100_143': 0.16870029542656453, 'galf_TE_A_100_217': 0.33250113203121456, 'galf_TE_A_143': 0.1551096318004332, 'galf_TE_A_143_217': 0.5462827902239877, 'galf_TE_A_217': 1.704645802360448, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:13:59,839 [planck_2018_highl_plik.ttteee] Computing new state
- 2022-03-02 23:13:59,866 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -51454.3
- 2022-03-02 23:13:59,866 [planck_2018_highl_plik.ttteee] First evaluation time: 0.0265815 s
- 2022-03-02 23:13:59,866 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0265815 s
- 2022-03-02 23:13:59,866 [planck_2018_lensing.clik] Got parameters {'A_planck': 0.9970247426535733}
- 2022-03-02 23:13:59,866 [planck_2018_lensing.clik] Computing new state
- 2022-03-02 23:13:59,868 [planck_2018_lensing.clik] Computed log-likelihood = -1063.03
- 2022-03-02 23:13:59,868 [planck_2018_lensing.clik] First evaluation time: 0.00172009 s
- 2022-03-02 23:13:59,868 [planck_2018_lensing.clik] Average evaluation time: 0.00172009 s
- 2022-03-02 23:13:59,868 [model] Computed derived parameters: {'chi2__CMB': inf}
- 2022-03-02 23:13:59,872 [prior] Evaluating prior at array([ 6.71964682e+01,  2.23800738e-02,  1.20024223e-01,  5.49005240e-02,
-       -2.53245209e+00,  3.52438345e+00,  2.42026996e+00,  2.68603225e+00,
-        1.00071929e+00,  9.98971932e-01,  9.97354697e-01,  6.30882288e+01,
-        2.60956760e-02,  1.90781768e+00,  1.28545475e+00,  3.81913761e+00,
-        8.50661938e+00,  2.63678447e+01,  8.91147116e+01,  2.56621631e+02,
-        3.66459139e+01,  2.26892678e+01,  1.08251022e+02,  5.95582392e-02,
-        2.55896189e-01,  5.27640767e-01,  8.73305963e-02,  8.38612705e-01,
-        1.79059672e+00])
- 2022-03-02 23:13:59,872 [prior] Got logpriors = -38.564407897409446
- 2022-03-02 23:13:59,873 [model] Got input parameters: {'H0': 67.19646815620636, 'ombh2': 0.02238007379385194, 'omch2': 0.12002422349609153, 'mnu': 0.06, 'tau': 0.05490052397504597, 'x1': -2.532452086811122, 'y0': 3.5243834530596345, 'y1': 2.4202699572498227, 'y2': 2.686032247913734, 'A_planck': 1.0007192914265168, 'calib_100T': 0.9989719323611993, 'calib_217T': 0.9973546968061777, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 63.08822881383573, 'xi_sz_cib': 0.026095676027940762, 'A_sz': 1.907817681334243, 'ksz_norm': 1.2854547516739026, 'gal545_A_100': 3.819137609664467, 'gal545_A_143': 8.506619384912554, 'gal545_A_143_217': 26.367844748905604, 'gal545_A_217': 89.11471163121705, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 256.62163094568075, 'ps_A_143_143': 36.64591392982117, 'ps_A_143_217': 22.689267772970386, 'ps_A_217_217': 108.25102232359632, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.059558239194831025, 'galf_TE_A_100_143': 0.2558961894975734, 'galf_TE_A_100_217': 0.5276407666047843, 'galf_TE_A_143': 0.08733059634792484, 'galf_TE_A_143_217': 0.8386127050324157, 'galf_TE_A_217': 1.7905967176530868, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:13:59,873 [my_theory] Got parameters {'x1': -2.532452086811122, 'y0': 3.5243834530596345, 'y1': 2.4202699572498227, 'y2': 2.686032247913734}
- 2022-03-02 23:13:59,873 [my_theory] Computing new state
- 2022-03-02 23:13:59,873 [my_theory] Average evaluation time: 0.000381621 s
- 2022-03-02 23:13:59,873 [camb.transfers] Got parameters {'H0': 67.19646815620636, 'ombh2': 0.02238007379385194, 'omch2': 0.12002422349609153, 'mnu': 0.06, 'tau': 0.05490052397504597}
- 2022-03-02 23:13:59,873 [camb.transfers] Computing new state
- 2022-03-02 23:13:59,873 [camb] Setting parameters: {'H0': 67.19646815620636, 'ombh2': 0.02238007379385194, 'omch2': 0.12002422349609153, 'mnu': 0.06, 'tau': 0.05490052397504597} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:14:03,748 [camb.transfers] Average evaluation time: 3.88573 s
- 2022-03-02 23:14:03,749 [camb] Got parameters {}
- 2022-03-02 23:14:03,749 [camb] Computing new state
- 2022-03-02 23:14:05,905 [camb] Average evaluation time: 2.15642 s
- 2022-03-02 23:14:05,905 [planck_2018_lowl.tt] Got parameters {'A_planck': 1.0007192914265168}
- 2022-03-02 23:14:05,905 [planck_2018_lowl.tt] Computing new state
- 2022-03-02 23:14:05,906 [planck_2018_lowl.tt] Computed log-likelihood = -inf
- 2022-03-02 23:14:05,906 [planck_2018_lowl.tt] Average evaluation time: 0.000675213 s
- 2022-03-02 23:14:05,906 [planck_2018_lowl.ee] Got parameters {'A_planck': 1.0007192914265168}
- 2022-03-02 23:14:05,906 [planck_2018_lowl.ee] Computing new state
- 2022-03-02 23:14:05,907 [planck_2018_lowl.ee] Computed log-likelihood = -204.58
- 2022-03-02 23:14:05,907 [planck_2018_lowl.ee] Average evaluation time: 0.000472178 s
- 2022-03-02 23:14:05,907 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 1.0007192914265168, 'calib_100T': 0.9989719323611993, 'calib_217T': 0.9973546968061777, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 63.08822881383573, 'xi_sz_cib': 0.026095676027940762, 'A_sz': 1.907817681334243, 'ksz_norm': 1.2854547516739026, 'gal545_A_100': 3.819137609664467, 'gal545_A_143': 8.506619384912554, 'gal545_A_143_217': 26.367844748905604, 'gal545_A_217': 89.11471163121705, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 256.62163094568075, 'ps_A_143_143': 36.64591392982117, 'ps_A_143_217': 22.689267772970386, 'ps_A_217_217': 108.25102232359632, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.059558239194831025, 'galf_TE_A_100_143': 0.2558961894975734, 'galf_TE_A_100_217': 0.5276407666047843, 'galf_TE_A_143': 0.08733059634792484, 'galf_TE_A_143_217': 0.8386127050324157, 'galf_TE_A_217': 1.7905967176530868, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:05,907 [planck_2018_highl_plik.ttteee] Computing new state
- 2022-03-02 23:14:05,929 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -64448.9
- 2022-03-02 23:14:05,929 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0224263 s
- 2022-03-02 23:14:05,929 [planck_2018_lensing.clik] Got parameters {'A_planck': 1.0007192914265168}
- 2022-03-02 23:14:05,930 [planck_2018_lensing.clik] Computing new state
- 2022-03-02 23:14:05,931 [planck_2018_lensing.clik] Computed log-likelihood = -1259.01
- 2022-03-02 23:14:05,931 [planck_2018_lensing.clik] Average evaluation time: 0.00143801 s
- 2022-03-02 23:14:05,931 [model] Computed derived parameters: {'chi2__CMB': inf}
- 2022-03-02 23:14:05,934 [prior] Evaluating prior at array([ 6.71967842e+01,  2.23358233e-02,  1.20008009e-01,  5.45218840e-02,
-       -2.90666035e+00,  3.14509806e+00,  3.72560187e+00,  2.93678128e+00,
-        1.00001090e+00,  1.00069274e+00,  9.97210916e-01,  6.64349552e+01,
-        9.35954770e-02,  5.18920870e+00,  1.31165209e+00,  5.54117360e+00,
-        7.80408309e+00,  2.04246114e+01,  9.61268531e+01,  3.04841499e+02,
-        4.39705800e+01,  1.27878120e+01,  9.17954557e+01,  1.59753605e-01,
-        7.10145933e-02,  5.86951777e-01,  2.18740548e-01,  7.92801907e-01,
-        1.95732837e+00])
- 2022-03-02 23:14:05,935 [prior] Got logpriors = -28.92470165436807
- 2022-03-02 23:14:05,935 [model] Got input parameters: {'H0': 67.19678423019104, 'ombh2': 0.022335823319784787, 'omch2': 0.1200080087643828, 'mnu': 0.06, 'tau': 0.0545218840103978, 'x1': -2.9066603453175697, 'y0': 3.1450980583631045, 'y1': 3.7256018688642785, 'y2': 2.9367812849413415, 'A_planck': 1.000010895024666, 'calib_100T': 1.0006927361636362, 'calib_217T': 0.9972109163124407, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 66.43495517403441, 'xi_sz_cib': 0.09359547702821613, 'A_sz': 5.189208697132808, 'ksz_norm': 1.3116520889692647, 'gal545_A_100': 5.541173604762772, 'gal545_A_143': 7.804083091204766, 'gal545_A_143_217': 20.42461136943175, 'gal545_A_217': 96.12685309977181, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 304.8414990242658, 'ps_A_143_143': 43.97058001818136, 'ps_A_143_217': 12.787812026459594, 'ps_A_217_217': 91.79545570542443, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.1597536047899319, 'galf_TE_A_100_143': 0.07101459334948726, 'galf_TE_A_100_217': 0.5869517773727425, 'galf_TE_A_143': 0.2187405484929801, 'galf_TE_A_143_217': 0.7928019072323432, 'galf_TE_A_217': 1.9573283737171763, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:05,935 [my_theory] Got parameters {'x1': -2.9066603453175697, 'y0': 3.1450980583631045, 'y1': 3.7256018688642785, 'y2': 2.9367812849413415}
- 2022-03-02 23:14:05,935 [my_theory] Computing new state
- 2022-03-02 23:14:05,935 [my_theory] Average evaluation time: 0.000331594 s
- 2022-03-02 23:14:05,935 [camb.transfers] Got parameters {'H0': 67.19678423019104, 'ombh2': 0.022335823319784787, 'omch2': 0.1200080087643828, 'mnu': 0.06, 'tau': 0.0545218840103978}
- 2022-03-02 23:14:05,935 [camb.transfers] Computing new state
- 2022-03-02 23:14:05,935 [camb] Setting parameters: {'H0': 67.19678423019104, 'ombh2': 0.022335823319784787, 'omch2': 0.1200080087643828, 'mnu': 0.06, 'tau': 0.0545218840103978} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:14:09,868 [camb.transfers] Average evaluation time: 3.90143 s
- 2022-03-02 23:14:09,869 [camb] Got parameters {}
- 2022-03-02 23:14:09,869 [camb] Computing new state
- 2022-03-02 23:14:11,928 [camb] Average evaluation time: 2.10747 s
- 2022-03-02 23:14:11,928 [planck_2018_lowl.tt] Got parameters {'A_planck': 1.000010895024666}
- 2022-03-02 23:14:11,928 [planck_2018_lowl.tt] Computing new state
- 2022-03-02 23:14:11,930 [planck_2018_lowl.tt] Computed log-likelihood = -70.7511
- 2022-03-02 23:14:11,930 [planck_2018_lowl.tt] Average evaluation time: 0.00103493 s
- 2022-03-02 23:14:11,930 [planck_2018_lowl.ee] Got parameters {'A_planck': 1.000010895024666}
- 2022-03-02 23:14:11,930 [planck_2018_lowl.ee] Computing new state
- 2022-03-02 23:14:11,930 [planck_2018_lowl.ee] Computed log-likelihood = -204.7
- 2022-03-02 23:14:11,930 [planck_2018_lowl.ee] Average evaluation time: 0.000522208 s
- 2022-03-02 23:14:11,931 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 1.000010895024666, 'calib_100T': 1.0006927361636362, 'calib_217T': 0.9972109163124407, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 66.43495517403441, 'xi_sz_cib': 0.09359547702821613, 'A_sz': 5.189208697132808, 'ksz_norm': 1.3116520889692647, 'gal545_A_100': 5.541173604762772, 'gal545_A_143': 7.804083091204766, 'gal545_A_143_217': 20.42461136943175, 'gal545_A_217': 96.12685309977181, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 304.8414990242658, 'ps_A_143_143': 43.97058001818136, 'ps_A_143_217': 12.787812026459594, 'ps_A_217_217': 91.79545570542443, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.1597536047899319, 'galf_TE_A_100_143': 0.07101459334948726, 'galf_TE_A_100_217': 0.5869517773727425, 'galf_TE_A_143': 0.2187405484929801, 'galf_TE_A_143_217': 0.7928019072323432, 'galf_TE_A_217': 1.9573283737171763, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:11,931 [planck_2018_highl_plik.ttteee] Computing new state
- 2022-03-02 23:14:11,956 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -66010.1
- 2022-03-02 23:14:11,957 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0241921 s
- 2022-03-02 23:14:11,957 [planck_2018_lensing.clik] Got parameters {'A_planck': 1.000010895024666}
- 2022-03-02 23:14:11,957 [planck_2018_lensing.clik] Computing new state
- 2022-03-02 23:14:11,958 [planck_2018_lensing.clik] Computed log-likelihood = -1285.93
- 2022-03-02 23:14:11,959 [planck_2018_lensing.clik] Average evaluation time: 0.00156421 s
- 2022-03-02 23:14:11,959 [model] Computed derived parameters: {'chi2__CMB': 135142.94403697908}
- 2022-03-02 23:14:11,962 [prior] Evaluating prior at array([ 6.72926577e+01,  2.23385889e-02,  1.19407286e-01,  5.53990238e-02,
-       -2.40292249e+00,  2.83649265e+00,  3.54144135e+00,  2.77189503e+00,
-        1.00317382e+00,  1.00104516e+00,  9.97925485e-01,  6.36139108e+01,
-        4.61237371e-03,  6.99401254e+00,  6.70155046e+00,  2.79257039e+00,
-        1.23999249e+01,  2.11771501e+01,  7.22102130e+01,  2.81641327e+02,
-        5.00350573e+01,  4.78397649e+01,  1.15003831e+02,  2.03441949e-03,
-        7.28565873e-02,  4.07955320e-01,  4.51379844e-01,  6.48253246e-01,
-        2.35555479e+00])
- 2022-03-02 23:14:11,963 [prior] Got logpriors = -41.28581757024883
- 2022-03-02 23:14:11,963 [model] Got input parameters: {'H0': 67.292657710043, 'ombh2': 0.022338588865615294, 'omch2': 0.11940728565830426, 'mnu': 0.06, 'tau': 0.05539902384308528, 'x1': -2.4029224908126396, 'y0': 2.8364926468726304, 'y1': 3.5414413537655323, 'y2': 2.771895028476024, 'A_planck': 1.0031738180153142, 'calib_100T': 1.0010451592321445, 'calib_217T': 0.9979254851311127, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 63.61391084629501, 'xi_sz_cib': 0.004612373709207383, 'A_sz': 6.9940125389324725, 'ksz_norm': 6.701550462750038, 'gal545_A_100': 2.7925703853318327, 'gal545_A_143': 12.399924925304193, 'gal545_A_143_217': 21.17715008536647, 'gal545_A_217': 72.21021296463873, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 281.6413266674136, 'ps_A_143_143': 50.03505728503905, 'ps_A_143_217': 47.83976487182601, 'ps_A_217_217': 115.00383101231103, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.0020344194882769007, 'galf_TE_A_100_143': 0.07285658731014681, 'galf_TE_A_100_217': 0.4079553198906376, 'galf_TE_A_143': 0.451379844402777, 'galf_TE_A_143_217': 0.6482532463033307, 'galf_TE_A_217': 2.3555547885158403, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:11,963 [my_theory] Got parameters {'x1': -2.4029224908126396, 'y0': 2.8364926468726304, 'y1': 3.5414413537655323, 'y2': 2.771895028476024}
- 2022-03-02 23:14:11,963 [my_theory] Computing new state
- 2022-03-02 23:14:11,964 [my_theory] Average evaluation time: 0.000335078 s
- 2022-03-02 23:14:11,964 [camb.transfers] Got parameters {'H0': 67.292657710043, 'ombh2': 0.022338588865615294, 'omch2': 0.11940728565830426, 'mnu': 0.06, 'tau': 0.05539902384308528}
- 2022-03-02 23:14:11,964 [camb.transfers] Computing new state
- 2022-03-02 23:14:11,964 [camb] Setting parameters: {'H0': 67.292657710043, 'ombh2': 0.022338588865615294, 'omch2': 0.11940728565830426, 'mnu': 0.06, 'tau': 0.05539902384308528} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:14:15,901 [camb.transfers] Average evaluation time: 3.91031 s
- 2022-03-02 23:14:15,901 [camb] Got parameters {}
- 2022-03-02 23:14:15,901 [camb] Computing new state
- 2022-03-02 23:14:18,146 [camb] Average evaluation time: 2.15328 s
- 2022-03-02 23:14:18,147 [planck_2018_lowl.tt] Got parameters {'A_planck': 1.0031738180153142}
- 2022-03-02 23:14:18,147 [planck_2018_lowl.tt] Computing new state
- 2022-03-02 23:14:18,147 [planck_2018_lowl.tt] Computed log-likelihood = -inf
- 2022-03-02 23:14:18,147 [planck_2018_lowl.tt] Average evaluation time: 0.000921835 s
- 2022-03-02 23:14:18,148 [planck_2018_lowl.ee] Got parameters {'A_planck': 1.0031738180153142}
- 2022-03-02 23:14:18,148 [planck_2018_lowl.ee] Computing new state
- 2022-03-02 23:14:18,148 [planck_2018_lowl.ee] Computed log-likelihood = -204.345
- 2022-03-02 23:14:18,148 [planck_2018_lowl.ee] Average evaluation time: 0.000515165 s
- 2022-03-02 23:14:18,148 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 1.0031738180153142, 'calib_100T': 1.0010451592321445, 'calib_217T': 0.9979254851311127, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 63.61391084629501, 'xi_sz_cib': 0.004612373709207383, 'A_sz': 6.9940125389324725, 'ksz_norm': 6.701550462750038, 'gal545_A_100': 2.7925703853318327, 'gal545_A_143': 12.399924925304193, 'gal545_A_143_217': 21.17715008536647, 'gal545_A_217': 72.21021296463873, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 281.6413266674136, 'ps_A_143_143': 50.03505728503905, 'ps_A_143_217': 47.83976487182601, 'ps_A_217_217': 115.00383101231103, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.0020344194882769007, 'galf_TE_A_100_143': 0.07285658731014681, 'galf_TE_A_100_217': 0.4079553198906376, 'galf_TE_A_143': 0.451379844402777, 'galf_TE_A_143_217': 0.6482532463033307, 'galf_TE_A_217': 2.3555547885158403, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:18,148 [planck_2018_highl_plik.ttteee] Computing new state
- 2022-03-02 23:14:18,171 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -26176.7
- 2022-03-02 23:14:18,172 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0238912 s
- 2022-03-02 23:14:18,172 [planck_2018_lensing.clik] Got parameters {'A_planck': 1.0031738180153142}
- 2022-03-02 23:14:18,172 [planck_2018_lensing.clik] Computing new state
- 2022-03-02 23:14:18,173 [planck_2018_lensing.clik] Computed log-likelihood = -513.547
- 2022-03-02 23:14:18,173 [planck_2018_lensing.clik] Average evaluation time: 0.0015327 s
- 2022-03-02 23:14:18,173 [model] Computed derived parameters: {'chi2__CMB': inf}
- 2022-03-02 23:14:18,176 [prior] Evaluating prior at array([ 6.71256452e+01,  2.23812840e-02,  1.20087700e-01,  5.60663378e-02,
-       -3.68624560e+00,  3.31356304e+00,  3.05300059e+00,  2.19681010e+00,
-        1.00120446e+00,  9.98853225e-01,  9.99107902e-01,  8.01890499e+01,
-        1.94691212e-02,  8.31820323e+00,  1.48933814e+00,  1.05811941e+01,
-        8.80658719e+00,  1.99913717e+01,  8.43536768e+01,  2.88261122e+02,
-        4.37573487e+01,  4.04680199e+01,  9.13647074e+01,  3.56928315e-01,
-        2.80736065e-02,  3.56631868e-01,  2.37539971e-01,  7.81997722e-01,
-        1.81209957e+00])
- 2022-03-02 23:14:18,177 [prior] Got logpriors = -46.59898634379001
- 2022-03-02 23:14:18,177 [model] Got input parameters: {'H0': 67.12564515280323, 'ombh2': 0.022381284048694803, 'omch2': 0.12008770006144082, 'mnu': 0.06, 'tau': 0.05606633776744293, 'x1': -3.6862455973260415, 'y0': 3.3135630434435654, 'y1': 3.0530005911292353, 'y2': 2.1968101028726723, 'A_planck': 1.001204458523438, 'calib_100T': 0.9988532252105178, 'calib_217T': 0.9991079019563627, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 80.18904992633306, 'xi_sz_cib': 0.01946912116797325, 'A_sz': 8.318203226693406, 'ksz_norm': 1.4893381414885065, 'gal545_A_100': 10.5811940874741, 'gal545_A_143': 8.806587193547033, 'gal545_A_143_217': 19.991371682304507, 'gal545_A_217': 84.35367682701539, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 288.2611221603779, 'ps_A_143_143': 43.757348655638, 'ps_A_143_217': 40.46801993780732, 'ps_A_217_217': 91.36470739446902, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.35692831531166713, 'galf_TE_A_100_143': 0.028073606485376656, 'galf_TE_A_100_217': 0.356631867697924, 'galf_TE_A_143': 0.23753997132095786, 'galf_TE_A_143_217': 0.7819977216792573, 'galf_TE_A_217': 1.8120995657365342, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:18,177 [my_theory] Got parameters {'x1': -3.6862455973260415, 'y0': 3.3135630434435654, 'y1': 3.0530005911292353, 'y2': 2.1968101028726723}
- 2022-03-02 23:14:18,177 [my_theory] Computing new state
- 2022-03-02 23:14:18,178 [my_theory] Average evaluation time: 0.000315655 s
- 2022-03-02 23:14:18,178 [camb.transfers] Got parameters {'H0': 67.12564515280323, 'ombh2': 0.022381284048694803, 'omch2': 0.12008770006144082, 'mnu': 0.06, 'tau': 0.05606633776744293}
- 2022-03-02 23:14:18,178 [camb.transfers] Computing new state
- 2022-03-02 23:14:18,178 [camb] Setting parameters: {'H0': 67.12564515280323, 'ombh2': 0.022381284048694803, 'omch2': 0.12008770006144082, 'mnu': 0.06, 'tau': 0.05606633776744293} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
- 2022-03-02 23:14:22,114 [camb.transfers] Average evaluation time: 3.91553 s
- 2022-03-02 23:14:22,115 [camb] Got parameters {}
- 2022-03-02 23:14:22,115 [camb] Computing new state
- 2022-03-02 23:14:24,149 [camb] Average evaluation time: 2.12338 s
- 2022-03-02 23:14:24,149 [planck_2018_lowl.tt] Got parameters {'A_planck': 1.001204458523438}
- 2022-03-02 23:14:24,149 [planck_2018_lowl.tt] Computing new state
- 2022-03-02 23:14:24,149 [planck_2018_lowl.tt] Computed log-likelihood = -17.5974
- 2022-03-02 23:14:24,150 [planck_2018_lowl.tt] Average evaluation time: 0.000894786 s
- 2022-03-02 23:14:24,150 [planck_2018_lowl.ee] Got parameters {'A_planck': 1.001204458523438}
- 2022-03-02 23:14:24,150 [planck_2018_lowl.ee] Computing new state
- 2022-03-02 23:14:24,150 [planck_2018_lowl.ee] Computed log-likelihood = -198.032
- 2022-03-02 23:14:24,150 [planck_2018_lowl.ee] Average evaluation time: 0.000504253 s
- 2022-03-02 23:14:24,150 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 1.001204458523438, 'calib_100T': 0.9988532252105178, 'calib_217T': 0.9991079019563627, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 80.18904992633306, 'xi_sz_cib': 0.01946912116797325, 'A_sz': 8.318203226693406, 'ksz_norm': 1.4893381414885065, 'gal545_A_100': 10.5811940874741, 'gal545_A_143': 8.806587193547033, 'gal545_A_143_217': 19.991371682304507, 'gal545_A_217': 84.35367682701539, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 288.2611221603779, 'ps_A_143_143': 43.757348655638, 'ps_A_143_217': 40.46801993780732, 'ps_A_217_217': 91.36470739446902, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.35692831531166713, 'galf_TE_A_100_143': 0.028073606485376656, 'galf_TE_A_100_217': 0.356631867697924, 'galf_TE_A_143': 0.23753997132095786, 'galf_TE_A_143_217': 0.7819977216792573, 'galf_TE_A_217': 1.8120995657365342, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
- 2022-03-02 23:14:24,150 [planck_2018_highl_plik.ttteee] Computing new state
- 2022-03-02 23:14:24,173 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -52675
- 2022-03-02 23:14:24,173 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0235339 s
- 2022-03-02 23:14:24,173 [planck_2018_lensing.clik] Got parameters {'A_planck': 1.001204458523438}
- 2022-03-02 23:14:24,173 [planck_2018_lensing.clik] Computing new state
- 2022-03-02 23:14:24,174 [planck_2018_lensing.clik] Computed log-likelihood = -917.517
- 2022-03-02 23:14:24,175 [planck_2018_lensing.clik] Average evaluation time: 0.00150875 s
- 2022-03-02 23:14:24,175 [model] Computed derived parameters: {'chi2__CMB': 107616.35834725999}
- 2022-03-02 23:14:24,175 [model] Computed 2 points to measure speeds.
- 2022-03-02 23:14:24,175 [model] Setting measured speeds (per sec): {planck_2018_lowl.TT: 1120.0, planck_2018_lowl.EE: 1980.0, planck_2018_highl_plik.TTTEEE: 42.5, planck_2018_lensing.clik: 663.0, my_theory: 3170.0, camb.transfers: 0.255, camb: 0.471}
- 2022-03-02 23:14:24,176 [model] Cost, oversampling factor and parameters per block, in optimal order:
- 2022-03-02 23:14:24,176 [model] * 6.06777 : 1 : ['H0', 'ombh2', 'omch2', 'tau']
- 2022-03-02 23:14:24,176 [model] * 2.15194 : 1 : ['x1', 'y0', 'y1', 'y2']
- 2022-03-02 23:14:24,177 [model] * 0.0276421 : 8 : ['A_planck']
- 2022-03-02 23:14:24,177 [model] * 0.023834 : 9 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
- 2022-03-02 23:14:24,177 [polychord] Parameter blocks and their oversampling factors:
- 2022-03-02 23:14:24,177 [polychord] * 1 : ['H0', 'ombh2', 'omch2', 'tau']
- 2022-03-02 23:14:24,177 [polychord] * 1 : ['x1', 'y0', 'y1', 'y2']
- 2022-03-02 23:14:24,177 [polychord] * 8 : ['A_planck']
- 2022-03-02 23:14:24,177 [polychord] * 9 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
- 2022-03-02 23:14:24,177 [prior] *WARNING* There are unbounded parameters (['A_planck', 'calib_100T', 'calib_217T', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
- 2022-03-02 23:14:24,196 [polychord] Calling PolyChord with arguments:
- 2022-03-02 23:14:24,196 [polychord]   base_dir: chains/lensed_polychord_raw
- 2022-03-02 23:14:24,196 [polychord]   boost_posterior: 0
- 2022-03-02 23:14:24,196 [polychord]   cluster_dir: chains/lensed_polychord_raw/clusters
- 2022-03-02 23:14:24,196 [polychord]   cluster_posteriors: True
- 2022-03-02 23:14:24,196 [polychord]   compression_factor: 0.36787944117144233
- 2022-03-02 23:14:24,196 [polychord]   cube_samples: None
- 2022-03-02 23:14:24,196 [polychord]   do_clustering: True
- 2022-03-02 23:14:24,196 [polychord]   equals: True
- 2022-03-02 23:14:24,196 [polychord]   feedback: 2
- 2022-03-02 23:14:24,196 [polychord]   file_root: lensed
- 2022-03-02 23:14:24,196 [polychord]   grade_dims: [4, 4, 1, 20]
- 2022-03-02 23:14:24,196 [polychord]   grade_frac: [8, 8, 16, 360]
- 2022-03-02 23:14:24,196 [polychord]   logzero: -1e+30
- 2022-03-02 23:14:24,196 [polychord]   max_ndead: -1
- 2022-03-02 23:14:24,196 [polychord]   maximise: False
- 2022-03-02 23:14:24,196 [polychord]   nfail: 725
- 2022-03-02 23:14:24,196 [polychord]   nlive: 725
- 2022-03-02 23:14:24,196 [polychord]   nlives: {}
- 2022-03-02 23:14:24,196 [polychord]   nprior: 7250
- 2022-03-02 23:14:24,196 [polychord]   num_repeats: 145
- 2022-03-02 23:14:24,196 [polychord]   posteriors: True
- 2022-03-02 23:14:24,196 [polychord]   precision_criterion: 0.001
- 2022-03-02 23:14:24,197 [polychord]   read_resume: False
- 2022-03-02 23:14:24,197 [polychord]   seed: -1
- 2022-03-02 23:14:24,197 [polychord]   synchronous: True
- 2022-03-02 23:14:24,197 [polychord]   write_dead: True
- 2022-03-02 23:14:24,197 [polychord]   write_live: True
- 2022-03-02 23:14:24,197 [polychord]   write_paramnames: False
- 2022-03-02 23:14:24,197 [polychord]   write_prior: True
- 2022-03-02 23:14:24,197 [polychord]   write_resume: True
- 2022-03-02 23:14:24,197 [polychord]   write_stats: True
- 2022-03-02 23:14:24,197 [polychord] Initialized!
- 2022-03-02 23:14:24,243 [run] Test initialization successful! You can probably run now without `--test`.
- 2022-03-02 23:14:24,243 [planck_2018_lowl.tt] Average evaluation time for planck_2018_lowl.TT: 0.000894786 s  (4 evaluations)
- 2022-03-02 23:14:24,244 [planck_2018_lowl.ee] Average evaluation time for planck_2018_lowl.EE: 0.000504253 s  (4 evaluations)
- 2022-03-02 23:14:24,244 [planck_2018_highl_plik.ttteee] Average evaluation time for planck_2018_highl_plik.TTTEEE: 0.0235339 s  (4 evaluations)
- 2022-03-02 23:14:24,247 [planck_2018_lensing.clik] Average evaluation time for planck_2018_lensing.clik: 0.00150875 s  (4 evaluations)
- 2022-03-02 23:14:24,247 [my_theory] Average evaluation time for my_theory: 0.000315655 s  (5 evaluations)
- 2022-03-02 23:14:24,247 [camb.transfers] Average evaluation time for camb.transfers: 3.91553 s  (5 evaluations)
- 2022-03-02 23:14:24,247 [camb] Average evaluation time for camb: 2.12338 s  (4 evaluations)
+ 2022-03-06 21:13:15,355 [output] Creating output folder 'output'
+ 2022-03-06 21:13:15,362 [output] Output to be read-from/written-into folder 'output', with prefix 'primordial_ps'
+ 2022-03-06 21:13:15,556 [input] Parameter 'A_planck' is multiply defined but consistent.
+ 2022-03-06 21:13:15,556 [input] Parameter 'A_planck' is multiply defined but consistent.
+ 2022-03-06 21:13:15,556 [input] Parameter 'A_planck' is multiply defined but consistent.
+ 2022-03-06 21:13:15,697 [output] Deleting folder 'output/primordial_ps_polychord_raw'
+ 2022-03-06 21:13:15,698 [output] Deleting folder 'output/primordial_ps_clusters'
+ 2022-03-06 21:13:15,758 [prior] Loading external prior 'my_prior' from: 'lambda x1, x2 : -1e30 if np.any(np.less_equal(np.diff(np.array([x1, x2])), 0)) else 0'
+ 2022-03-06 21:13:15,758 [prior] *WARNING* External prior 'my_prior' loaded. Mind that it might not be normalized!
+ 2022-03-06 21:13:15,758 [prior] Loading external prior 'SZ' from: 'lambda ksz_norm, A_sz: stats.norm.logpdf(ksz_norm+1.6*A_sz, loc=9.5, scale=3.0)'
+ 2022-03-06 21:13:15,759 [prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+ 2022-03-06 21:13:15,764 [CAMB] Importing *auto-installed* CAMB (but defaulting to *global*).
+ 2022-03-06 21:13:15,833 [camb] Initialized!
+ 2022-03-06 21:13:15,837 [clik] Importing *auto-installed* clik (but defaulting to *global*).
+ 2022-03-06 21:13:16,143 [planck_2018_lowl.tt] Initialized!
+ 2022-03-06 21:13:16,144 [clik] Importing *auto-installed* clik (but defaulting to *global*).
+ 2022-03-06 21:13:16,149 [planck_2018_lowl.ee] Initialized!
+ 2022-03-06 21:13:16,151 [clik] Importing *auto-installed* clik (but defaulting to *global*).
+ 2022-03-06 21:13:16,393 [planck_2018_highl_plik.ttteee] Initialized!
+ 2022-03-06 21:13:16,394 [planck_2018_highl_plik.sz] Initialized external likelihood.
+ 2022-03-06 21:13:16,396 [clik] Importing *auto-installed* clik (but defaulting to *global*).
+ 2022-03-06 21:13:16,407 [planck_2018_lensing.clik] Initialized!
+ 2022-03-06 21:13:16,409 [model] Parameters were assigned as follows:
+ 2022-03-06 21:13:16,409 [model] - planck_2018_lowl.TT:
+ 2022-03-06 21:13:16,409 [model]      Input:  ['A_planck']
+ 2022-03-06 21:13:16,409 [model]      Output: []
+ 2022-03-06 21:13:16,409 [model] - planck_2018_lowl.EE:
+ 2022-03-06 21:13:16,409 [model]      Input:  ['A_planck']
+ 2022-03-06 21:13:16,409 [model]      Output: []
+ 2022-03-06 21:13:16,409 [model] - planck_2018_highl_plik.TTTEEE:
+ 2022-03-06 21:13:16,409 [model]      Input:  ['A_planck', 'calib_100T', 'calib_217T', 'A_pol', 'calib_100P', 'calib_143P', 'calib_217P', 'cib_index', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'A_sbpx_100_100_TT', 'A_sbpx_143_143_TT', 'A_sbpx_143_217_TT', 'A_sbpx_217_217_TT', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_index', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217', 'galf_EE_index', 'galf_EE_A_100', 'galf_EE_A_100_143', 'galf_EE_A_100_217', 'galf_EE_A_143', 'galf_EE_A_143_217', 'galf_EE_A_217', 'A_cnoise_e2e_100_100_EE', 'A_cnoise_e2e_143_143_EE', 'A_cnoise_e2e_217_217_EE', 'A_sbpx_100_100_EE', 'A_sbpx_100_143_EE', 'A_sbpx_100_217_EE', 'A_sbpx_143_143_EE', 'A_sbpx_143_217_EE', 'A_sbpx_217_217_EE']
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,410 [model] - planck_2018_highl_plik.SZ:
+ 2022-03-06 21:13:16,410 [model]      Input:  ['A_sz', 'ksz_norm']
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,410 [model] - planck_2018_lensing.clik:
+ 2022-03-06 21:13:16,410 [model]      Input:  ['A_planck']
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,410 [model] - my_theory:
+ 2022-03-06 21:13:16,410 [model]      Input:  ['x1', 'x2', 'y0', 'y1', 'y2', 'y3']
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,410 [model] - camb.transfers:
+ 2022-03-06 21:13:16,410 [model]      Input:  ['H0', 'ombh2', 'omch2', 'mnu', 'tau']
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,410 [model] - camb:
+ 2022-03-06 21:13:16,410 [model]      Input:  []
+ 2022-03-06 21:13:16,410 [model]      Output: []
+ 2022-03-06 21:13:16,414 [model] Components will be computed in the order:
+ 2022-03-06 21:13:16,414 [model]  - [planck_2018_highl_plik.SZ, my_theory, camb.transfers, camb, planck_2018_lowl.TT, planck_2018_lowl.EE, planck_2018_highl_plik.TTTEEE, planck_2018_lensing.clik]
+ 2022-03-06 21:13:16,414 [model] Requirements will be calculated by these components:
+ 2022-03-06 21:13:16,414 [model] - Cl: camb
+ 2022-03-06 21:13:16,414 [model] - CAMB_transfers: camb.transfers
+ 2022-03-06 21:13:16,414 [model] - primordial_scalar_pk: my_theory
+ 2022-03-06 21:13:16,464 [polychord] Importing *local* PolyChord from '/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite'.
+ 2022-03-06 21:13:16,484 [polychord] Storing raw PolyChord output in 'output/primordial_ps_polychord_raw'.
+ 2022-03-06 21:13:16,484 [model] Measuring speeds... (this may take a few seconds)
+ 2022-03-06 21:13:16,487 [prior] Evaluating prior at array([ 6.73306429e+01,  2.23614198e-02,  1.20022893e-01,  5.49322427e-02,
+       -2.93929817e+00, -2.73415190e+00,  2.20284670e+00,  3.24400094e+00,
+        3.63706507e+00,  3.74601355e+00,  1.00094612e+00,  1.00006224e+00,
+        9.97737412e-01,  5.76736720e+01,  1.14317032e-01,  8.02158876e+00,
+        2.86434101e+00,  4.00676614e+00,  1.01932176e+01,  2.60438681e+01,
+        9.23716352e+01,  2.68713796e+02,  4.63214040e+01,  4.33171317e+01,
+        8.65709035e+01,  2.81033570e-01,  4.85191603e-02,  3.89859992e-01,
+        2.91079330e-02,  7.53474719e-01,  1.95003062e+00])
+ 2022-03-06 21:13:16,488 [prior] Got logpriors = -39.89792379027523
+ 2022-03-06 21:13:16,488 [model] Got input parameters: {'H0': 67.33064291972433, 'ombh2': 0.022361419816115936, 'omch2': 0.12002289297548585, 'mnu': 0.06, 'tau': 0.05493224273909042, 'x1': -2.939298167881679, 'x2': -2.7341518978155293, 'y0': 2.2028466956417567, 'y1': 3.244000938136912, 'y2': 3.6370650668839604, 'y3': 3.74601354707287, 'A_planck': 1.0009461238410977, 'calib_100T': 1.0000622426143495, 'calib_217T': 0.9977374123455619, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 57.673672003406175, 'xi_sz_cib': 0.11431703244609344, 'A_sz': 8.021588760884839, 'ksz_norm': 2.8643410126644193, 'gal545_A_100': 4.006766140767425, 'gal545_A_143': 10.193217620123583, 'gal545_A_143_217': 26.04386806317249, 'gal545_A_217': 92.37163521239827, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 268.7137959796444, 'ps_A_143_143': 46.32140404944872, 'ps_A_143_217': 43.3171317279082, 'ps_A_217_217': 86.57090351314598, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.28103356960160253, 'galf_TE_A_100_143': 0.04851916025539221, 'galf_TE_A_100_217': 0.3898599919559624, 'galf_TE_A_143': 0.029107932958827992, 'galf_TE_A_143_217': 0.7534747186775987, 'galf_TE_A_217': 1.9500306195348593, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
+ 2022-03-06 21:13:16,488 [planck_2018_highl_plik.sz] Got parameters {'A_sz': 8.021588760884839, 'ksz_norm': 2.8643410126644193}
+ 2022-03-06 21:13:16,488 [planck_2018_highl_plik.sz] Computing new state
+ 2022-03-06 21:13:16,488 [planck_2018_highl_plik.sz] Computed log-likelihood = -4.15234
+ 2022-03-06 21:13:16,488 [planck_2018_highl_plik.sz] First evaluation time: 5.72493e-05 s
+ 2022-03-06 21:13:16,488 [planck_2018_highl_plik.sz] Average evaluation time: 5.72493e-05 s
+ 2022-03-06 21:13:16,488 [my_theory] Got parameters {'x1': -2.939298167881679, 'x2': -2.7341518978155293, 'y0': 2.2028466956417567, 'y1': 3.244000938136912, 'y2': 3.6370650668839604, 'y3': 3.74601354707287}
+ 2022-03-06 21:13:16,489 [my_theory] Computing new state
+ 2022-03-06 21:13:16,489 [my_theory] First evaluation time: 0.00034807 s
+ 2022-03-06 21:13:16,489 [my_theory] Average evaluation time: 0.00034807 s
+ 2022-03-06 21:13:16,489 [camb.transfers] Got parameters {'H0': 67.33064291972433, 'ombh2': 0.022361419816115936, 'omch2': 0.12002289297548585, 'mnu': 0.06, 'tau': 0.05493224273909042}
+ 2022-03-06 21:13:16,489 [camb.transfers] Computing new state
+ 2022-03-06 21:13:16,489 [camb] Setting parameters: {'H0': 67.33064291972433, 'ombh2': 0.022361419816115936, 'omch2': 0.12002289297548585, 'mnu': 0.06, 'tau': 0.05493224273909042} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
+ 2022-03-06 21:13:16,497 [camb] Setting attributes of CAMBparams: {'Want_CMB': True, 'Want_cl_2D_array': False, 'WantCls': True, 'NonLinear': 'NonLinear_lens'}
+ 2022-03-06 21:13:20,234 [camb.transfers] First evaluation time: 3.74464 s
+ 2022-03-06 21:13:20,234 [camb.transfers] Average evaluation time: 3.74464 s
+ 2022-03-06 21:13:20,235 [camb] Got parameters {}
+ 2022-03-06 21:13:20,235 [camb] Computing new state
+ 2022-03-06 21:13:22,634 [camb] First evaluation time: 2.39889 s
+ 2022-03-06 21:13:22,634 [camb] Average evaluation time: 2.39889 s
+ 2022-03-06 21:13:22,634 [planck_2018_lowl.tt] Got parameters {'A_planck': 1.0009461238410977}
+ 2022-03-06 21:13:22,634 [planck_2018_lowl.tt] Computing new state
+ 2022-03-06 21:13:22,636 [planck_2018_lowl.tt] Computed log-likelihood = -56.7694
+ 2022-03-06 21:13:22,636 [planck_2018_lowl.tt] First evaluation time: 0.00150429 s
+ 2022-03-06 21:13:22,636 [planck_2018_lowl.tt] Average evaluation time: 0.00150429 s
+ 2022-03-06 21:13:22,636 [planck_2018_lowl.ee] Got parameters {'A_planck': 1.0009461238410977}
+ 2022-03-06 21:13:22,636 [planck_2018_lowl.ee] Computing new state
+ 2022-03-06 21:13:22,637 [planck_2018_lowl.ee] Computed log-likelihood = -199.212
+ 2022-03-06 21:13:22,637 [planck_2018_lowl.ee] First evaluation time: 0.000522322 s
+ 2022-03-06 21:13:22,637 [planck_2018_lowl.ee] Average evaluation time: 0.000522322 s
+ 2022-03-06 21:13:22,637 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 1.0009461238410977, 'calib_100T': 1.0000622426143495, 'calib_217T': 0.9977374123455619, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 57.673672003406175, 'xi_sz_cib': 0.11431703244609344, 'A_sz': 8.021588760884839, 'ksz_norm': 2.8643410126644193, 'gal545_A_100': 4.006766140767425, 'gal545_A_143': 10.193217620123583, 'gal545_A_143_217': 26.04386806317249, 'gal545_A_217': 92.37163521239827, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 268.7137959796444, 'ps_A_143_143': 46.32140404944872, 'ps_A_143_217': 43.3171317279082, 'ps_A_217_217': 86.57090351314598, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.28103356960160253, 'galf_TE_A_100_143': 0.04851916025539221, 'galf_TE_A_100_217': 0.3898599919559624, 'galf_TE_A_143': 0.029107932958827992, 'galf_TE_A_143_217': 0.7534747186775987, 'galf_TE_A_217': 1.9500306195348593, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
+ 2022-03-06 21:13:22,637 [planck_2018_highl_plik.ttteee] Computing new state
+ 2022-03-06 21:13:22,665 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -390568
+ 2022-03-06 21:13:22,665 [planck_2018_highl_plik.ttteee] First evaluation time: 0.0279241 s
+ 2022-03-06 21:13:22,665 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0279241 s
+ 2022-03-06 21:13:22,665 [planck_2018_lensing.clik] Got parameters {'A_planck': 1.0009461238410977}
+ 2022-03-06 21:13:22,665 [planck_2018_lensing.clik] Computing new state
+ 2022-03-06 21:13:22,667 [planck_2018_lensing.clik] Computed log-likelihood = -5873.68
+ 2022-03-06 21:13:22,667 [planck_2018_lensing.clik] First evaluation time: 0.00160012 s
+ 2022-03-06 21:13:22,667 [planck_2018_lensing.clik] Average evaluation time: 0.00160012 s
+ 2022-03-06 21:13:22,667 [model] Computed derived parameters: {'chi2__CMB': 793395.4889360736}
+ 2022-03-06 21:13:22,671 [prior] Evaluating prior at array([ 6.70559304e+01,  2.23778044e-02,  1.20089257e-01,  5.44310221e-02,
+       -2.38286284e+00, -1.31145418e+00,  2.38600570e+00,  3.07881073e+00,
+        2.82832504e+00,  2.97761500e+00,  9.99164841e-01,  1.00190618e+00,
+        9.97112401e-01,  6.10674342e+01,  8.67213208e-03,  5.61991865e+00,
+        4.08704520e+00,  5.50628284e+00,  8.18660000e+00,  1.72210600e+01,
+        6.77958111e+01,  2.80151466e+02,  4.41626928e+01,  5.82110751e+01,
+        1.16056695e+02,  2.40584021e-02,  1.65168416e-01,  2.86160332e-01,
+        9.80632423e-02,  6.55763471e-01,  1.86781182e+00])
+ 2022-03-06 21:13:22,671 [prior] Got logpriors = -38.09581592700878
+ 2022-03-06 21:13:22,671 [model] Got input parameters: {'H0': 67.05593044630366, 'ombh2': 0.02237780444840261, 'omch2': 0.12008925674921901, 'mnu': 0.06, 'tau': 0.054431022083209595, 'x1': -2.382862843206425, 'x2': -1.3114541830083866, 'y0': 2.386005702796261, 'y1': 3.0788107340866038, 'y2': 2.8283250383715144, 'y3': 2.97761499856254, 'A_planck': 0.9991648409041857, 'calib_100T': 1.0019061827970688, 'calib_217T': 0.9971124012168251, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 61.06743418961566, 'xi_sz_cib': 0.008672132080967348, 'A_sz': 5.619918652183877, 'ksz_norm': 4.0870452013320655, 'gal545_A_100': 5.5062828361821925, 'gal545_A_143': 8.186599999498371, 'gal545_A_143_217': 17.22106003598588, 'gal545_A_217': 67.7958111259982, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 280.15146550864904, 'ps_A_143_143': 44.16269280810277, 'ps_A_143_217': 58.21107506150089, 'ps_A_217_217': 116.05669507589353, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.02405840214805338, 'galf_TE_A_100_143': 0.16516841626535403, 'galf_TE_A_100_217': 0.28616033243771144, 'galf_TE_A_143': 0.09806324227072823, 'galf_TE_A_143_217': 0.6557634707387702, 'galf_TE_A_217': 1.867811824939248, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
+ 2022-03-06 21:13:22,672 [planck_2018_highl_plik.sz] Got parameters {'A_sz': 5.619918652183877, 'ksz_norm': 4.0870452013320655}
+ 2022-03-06 21:13:22,672 [planck_2018_highl_plik.sz] Computing new state
+ 2022-03-06 21:13:22,672 [planck_2018_highl_plik.sz] Computed log-likelihood = -2.72914
+ 2022-03-06 21:13:22,672 [planck_2018_highl_plik.sz] Average evaluation time: 5.82822e-05 s
+ 2022-03-06 21:13:22,672 [my_theory] Got parameters {'x1': -2.382862843206425, 'x2': -1.3114541830083866, 'y0': 2.386005702796261, 'y1': 3.0788107340866038, 'y2': 2.8283250383715144, 'y3': 2.97761499856254}
+ 2022-03-06 21:13:22,672 [my_theory] Computing new state
+ 2022-03-06 21:13:22,672 [my_theory] Average evaluation time: 0.000403763 s
+ 2022-03-06 21:13:22,672 [camb.transfers] Got parameters {'H0': 67.05593044630366, 'ombh2': 0.02237780444840261, 'omch2': 0.12008925674921901, 'mnu': 0.06, 'tau': 0.054431022083209595}
+ 2022-03-06 21:13:22,672 [camb.transfers] Computing new state
+ 2022-03-06 21:13:22,672 [camb] Setting parameters: {'H0': 67.05593044630366, 'ombh2': 0.02237780444840261, 'omch2': 0.12008925674921901, 'mnu': 0.06, 'tau': 0.054431022083209595} and {'initial_power_model': <class 'camb.initialpower.SplinedInitialPower'>, 'lmax': 2508, 'lens_potential_accuracy': 1}
+ 2022-03-06 21:13:26,410 [camb.transfers] Average evaluation time: 3.73708 s
+ 2022-03-06 21:13:26,410 [camb] Got parameters {}
+ 2022-03-06 21:13:26,410 [camb] Computing new state
+ 2022-03-06 21:13:28,453 [camb] Average evaluation time: 2.04326 s
+ 2022-03-06 21:13:28,453 [planck_2018_lowl.tt] Got parameters {'A_planck': 0.9991648409041857}
+ 2022-03-06 21:13:28,453 [planck_2018_lowl.tt] Computing new state
+ 2022-03-06 21:13:28,454 [planck_2018_lowl.tt] Computed log-likelihood = -14.6661
+ 2022-03-06 21:13:28,454 [planck_2018_lowl.tt] Average evaluation time: 0.000765416 s
+ 2022-03-06 21:13:28,454 [planck_2018_lowl.ee] Got parameters {'A_planck': 0.9991648409041857}
+ 2022-03-06 21:13:28,454 [planck_2018_lowl.ee] Computing new state
+ 2022-03-06 21:13:28,455 [planck_2018_lowl.ee] Computed log-likelihood = -198.286
+ 2022-03-06 21:13:28,455 [planck_2018_lowl.ee] Average evaluation time: 0.000358313 s
+ 2022-03-06 21:13:28,455 [planck_2018_highl_plik.ttteee] Got parameters {'A_planck': 0.9991648409041857, 'calib_100T': 1.0019061827970688, 'calib_217T': 0.9971124012168251, 'A_pol': 1.0, 'calib_100P': 1.021, 'calib_143P': 0.966, 'calib_217P': 1.04, 'cib_index': -1.3, 'A_cib_217': 61.06743418961566, 'xi_sz_cib': 0.008672132080967348, 'A_sz': 5.619918652183877, 'ksz_norm': 4.0870452013320655, 'gal545_A_100': 5.5062828361821925, 'gal545_A_143': 8.186599999498371, 'gal545_A_143_217': 17.22106003598588, 'gal545_A_217': 67.7958111259982, 'A_sbpx_100_100_TT': 1.0, 'A_sbpx_143_143_TT': 1.0, 'A_sbpx_143_217_TT': 1.0, 'A_sbpx_217_217_TT': 1.0, 'ps_A_100_100': 280.15146550864904, 'ps_A_143_143': 44.16269280810277, 'ps_A_143_217': 58.21107506150089, 'ps_A_217_217': 116.05669507589353, 'galf_TE_index': -2.4, 'galf_TE_A_100': 0.02405840214805338, 'galf_TE_A_100_143': 0.16516841626535403, 'galf_TE_A_100_217': 0.28616033243771144, 'galf_TE_A_143': 0.09806324227072823, 'galf_TE_A_143_217': 0.6557634707387702, 'galf_TE_A_217': 1.867811824939248, 'galf_EE_index': -2.4, 'galf_EE_A_100': 0.055, 'galf_EE_A_100_143': 0.04, 'galf_EE_A_100_217': 0.094, 'galf_EE_A_143': 0.086, 'galf_EE_A_143_217': 0.21, 'galf_EE_A_217': 0.7, 'A_cnoise_e2e_100_100_EE': 1.0, 'A_cnoise_e2e_143_143_EE': 1.0, 'A_cnoise_e2e_217_217_EE': 1.0, 'A_sbpx_100_100_EE': 1.0, 'A_sbpx_100_143_EE': 1.0, 'A_sbpx_100_217_EE': 1.0, 'A_sbpx_143_143_EE': 1.0, 'A_sbpx_143_217_EE': 1.0, 'A_sbpx_217_217_EE': 1.0}
+ 2022-03-06 21:13:28,455 [planck_2018_highl_plik.ttteee] Computing new state
+ 2022-03-06 21:13:28,477 [planck_2018_highl_plik.ttteee] Computed log-likelihood = -9579.46
+ 2022-03-06 21:13:28,477 [planck_2018_highl_plik.ttteee] Average evaluation time: 0.0223013 s
+ 2022-03-06 21:13:28,477 [planck_2018_lensing.clik] Got parameters {'A_planck': 0.9991648409041857}
+ 2022-03-06 21:13:28,477 [planck_2018_lensing.clik] Computing new state
+ 2022-03-06 21:13:28,479 [planck_2018_lensing.clik] Computed log-likelihood = -162.853
+ 2022-03-06 21:13:28,479 [planck_2018_lensing.clik] Average evaluation time: 0.0012949 s
+ 2022-03-06 21:13:28,479 [model] Computed derived parameters: {'chi2__CMB': 19910.527095681096}
+ 2022-03-06 21:13:28,479 [model] Computed 2 points to measure speeds.
+ 2022-03-06 21:13:28,479 [model] Setting measured speeds (per sec): {planck_2018_lowl.TT: 1310.0, planck_2018_lowl.EE: 2790.0, planck_2018_highl_plik.TTTEEE: 44.8, planck_2018_highl_plik.SZ: 17100.0, planck_2018_lensing.clik: 772.0, my_theory: 2480.0, camb.transfers: 0.268, camb: 0.489}
+ 2022-03-06 21:13:28,482 [model] Cost, oversampling factor and parameters per block, in optimal order:
+ 2022-03-06 21:13:28,482 [model] * 5.80792 : 1 : ['H0', 'ombh2', 'omch2', 'tau']
+ 2022-03-06 21:13:28,482 [model] * 2.07054 : 1 : ['x1', 'x2', 'y0', 'y1', 'y2', 'y3']
+ 2022-03-06 21:13:28,482 [model] * 0.0262787 : 8 : ['A_planck']
+ 2022-03-06 21:13:28,482 [model] * 0.0229597 : 9 : ['A_sz', 'ksz_norm']
+ 2022-03-06 21:13:28,482 [model] * 0.0226014 : 9 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+ 2022-03-06 21:13:28,483 [polychord] Parameter blocks and their oversampling factors:
+ 2022-03-06 21:13:28,483 [polychord] * 1 : ['H0', 'ombh2', 'omch2', 'tau']
+ 2022-03-06 21:13:28,483 [polychord] * 1 : ['x1', 'x2', 'y0', 'y1', 'y2', 'y3']
+ 2022-03-06 21:13:28,483 [polychord] * 8 : ['A_planck']
+ 2022-03-06 21:13:28,483 [polychord] * 9 : ['A_sz', 'ksz_norm']
+ 2022-03-06 21:13:28,483 [polychord] * 9 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+ 2022-03-06 21:13:28,483 [prior] *WARNING* There are unbounded parameters (['A_planck', 'calib_100T', 'calib_217T', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+ 2022-03-06 21:13:28,500 [polychord] Calling PolyChord with arguments:
+ 2022-03-06 21:13:28,500 [polychord]   base_dir: output/primordial_ps_polychord_raw
+ 2022-03-06 21:13:28,500 [polychord]   boost_posterior: 0
+ 2022-03-06 21:13:28,500 [polychord]   cluster_dir: output/primordial_ps_polychord_raw/clusters
+ 2022-03-06 21:13:28,500 [polychord]   cluster_posteriors: True
+ 2022-03-06 21:13:28,500 [polychord]   compression_factor: 0.36787944117144233
+ 2022-03-06 21:13:28,501 [polychord]   cube_samples: None
+ 2022-03-06 21:13:28,501 [polychord]   do_clustering: True
+ 2022-03-06 21:13:28,501 [polychord]   equals: True
+ 2022-03-06 21:13:28,501 [polychord]   feedback: 2
+ 2022-03-06 21:13:28,501 [polychord]   file_root: primordial_ps
+ 2022-03-06 21:13:28,501 [polychord]   grade_dims: [4, 6, 1, 2, 18]
+ 2022-03-06 21:13:28,501 [polychord]   grade_frac: [8, 12, 16, 36, 324]
+ 2022-03-06 21:13:28,501 [polychord]   logzero: -1e+30
+ 2022-03-06 21:13:28,501 [polychord]   max_ndead: -1
+ 2022-03-06 21:13:28,501 [polychord]   maximise: False
+ 2022-03-06 21:13:28,501 [polychord]   nfail: 100
+ 2022-03-06 21:13:28,501 [polychord]   nlive: 100
+ 2022-03-06 21:13:28,501 [polychord]   nlives: {}
+ 2022-03-06 21:13:28,501 [polychord]   nprior: 1000
+ 2022-03-06 21:13:28,501 [polychord]   num_repeats: 155
+ 2022-03-06 21:13:28,501 [polychord]   posteriors: True
+ 2022-03-06 21:13:28,501 [polychord]   precision_criterion: 0.001
+ 2022-03-06 21:13:28,501 [polychord]   read_resume: False
+ 2022-03-06 21:13:28,501 [polychord]   seed: -1
+ 2022-03-06 21:13:28,501 [polychord]   synchronous: True
+ 2022-03-06 21:13:28,501 [polychord]   write_dead: True
+ 2022-03-06 21:13:28,501 [polychord]   write_live: True
+ 2022-03-06 21:13:28,501 [polychord]   write_paramnames: False
+ 2022-03-06 21:13:28,501 [polychord]   write_prior: True
+ 2022-03-06 21:13:28,501 [polychord]   write_resume: True
+ 2022-03-06 21:13:28,501 [polychord]   write_stats: True
+ 2022-03-06 21:13:28,501 [polychord] Initialized!
+ 2022-03-06 21:13:28,549 [run] Test initialization successful! You can probably run now without `--test`.
+ 2022-03-06 21:13:28,549 [planck_2018_lowl.tt] Average evaluation time for planck_2018_lowl.TT: 0.000765416 s  (1 evaluations)
+ 2022-03-06 21:13:28,549 [planck_2018_lowl.ee] Average evaluation time for planck_2018_lowl.EE: 0.000358313 s  (1 evaluations)
+ 2022-03-06 21:13:28,549 [planck_2018_highl_plik.ttteee] Average evaluation time for planck_2018_highl_plik.TTTEEE: 0.0223013 s  (1 evaluations)
+ 2022-03-06 21:13:28,552 [planck_2018_highl_plik.sz] Average evaluation time for planck_2018_highl_plik.SZ: 5.82822e-05 s  (1 evaluations)
+ 2022-03-06 21:13:28,552 [planck_2018_lensing.clik] Average evaluation time for planck_2018_lensing.clik: 0.0012949 s  (1 evaluations)
+ 2022-03-06 21:13:28,552 [my_theory] Average evaluation time for my_theory: 0.000403763 s  (1 evaluations)
+ 2022-03-06 21:13:28,552 [camb.transfers] Average evaluation time for camb.transfers: 3.73708 s  (1 evaluations)
+ 2022-03-06 21:13:28,552 [camb] Average evaluation time for camb: 2.04326 s  (1 evaluations)
 ----
 clik version plc_3.1
   gibbs_gauss b13c8fda-1837-41b5-ae2d-78d6b723fcf1
