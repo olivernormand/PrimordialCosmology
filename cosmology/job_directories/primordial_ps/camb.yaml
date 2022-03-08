@@ -1,10 +1,3 @@
-theory:
-  theory_primordial_Pk.FeaturePrimordialPk:
-    python_path: "."
-    k_pivot: 0.05
-    n_samples_wavelength: 20
-  camb:
-    external_primordial_pk: True
 likelihood:
   planck_2018_lowl.TT: null
   planck_2018_lowl.EE: null
@@ -36,6 +29,6 @@ params:
 sampler:
   polychord:
     path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
-    nlive: 100
+    nlive: 200
 timing: True
 output: output/primordial_ps
