@@ -4,11 +4,12 @@ from cobaya.theory import Theory
 from PowerSpectraModule import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra, update_output
 import numpy as np
 
-nDims = 6
+test = False
+debug = False
+nDims = 8
 xlim = [-4, -0.3]
 ylim = [2, 4]
-yaml_filename = 'camb.yaml'
-
+yaml_filename = 'tightpriors_fixedtau.yaml'
 
 class FeaturePrimordialPk(Theory):
     """
@@ -16,16 +17,16 @@ class FeaturePrimordialPk(Theory):
         linearly-oscillatory feture on top.
     """
 
-    _, params = get_params_from_nDims(nDims)
+    params_list, params = get_params_from_nDims(nDims)
 
     def initialize(self):
         self.ks = np.logspace(xlim[0], xlim[1], 1000)
-        self.params_list, _ = get_params_from_nDims(nDims)
+        self.params_list, params = get_params_from_nDims(nDims)
 
     def calculate(self, state, want_derived=True, **params_values_dict):
 
         params_values = [params_values_dict[p] for p in self.params_list]
-        ks, Pks = power_spectra(self.ks, params_values, xlim=xlim)
+        ks, Pks = power_spectra(self.ks, params_values, xlim = xlim)
         state['primordial_scalar_pk'] = {
             'k': ks, 'Pk': Pks, 'log_regular': False}
 
@@ -46,4 +47,5 @@ info['params'] = info_params
 info['theory'] = info_theory
 info['output'] = info_output
 
-updated_info, sampler = run(info)
+updated_info, sampler = run(info, test = test, debug = debug)
+

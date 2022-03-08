@@ -4,7 +4,7 @@ from cobaya.theory import Theory
 from PowerSpectraModule import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra, update_output
 import numpy as np
 
-test = True
+test = False
 debug = False
 nDims = 8
 xlim = [-4, -0.3]

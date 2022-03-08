@@ -43,3 +43,6 @@ playground/toy_models/.gitignore
 .gitignore
 playground/toy_models/.gitignore
 .gitconfig
+cosmology/job_directories/primordial_ps/output.txt
+cosmology/job_directories/primordial_ps/machine.file.56605860
+cosmology/job_directories/primordial_ps/machine.file.56605916

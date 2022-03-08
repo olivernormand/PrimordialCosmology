@@ -61,7 +61,9 @@ def get_input_params_dict(nDims, xlim, ylim, info_params = {}):
     x_proposal = x_proposal[1:-1]
 
     for i in range(1, nPoints - 1):
-        info_params['x' + str(i)] = {'prior': {'min': xmin, 'max': xmax}}
+        fraction = i / nPoints
+        proposal = xmin * (1-fraction) + xmax * fraction
+        info_params['x' + str(i)] = {'prior': {'min': xmin, 'max': xmax}, 'proposal': proposal}
     for i in range(nPoints):
         info_params['y' + str(i)] = {'prior': {'min': ymin, 'max': ymax}}
     return info_params
