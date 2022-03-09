@@ -4,7 +4,7 @@ from cobaya.theory import Theory
 from PowerSpectraModule import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra, update_output
 import numpy as np
 
-test = True
+test = False
 debug = False
 nDims = 8
 xlim = [-4, -0.3]
@@ -37,15 +37,16 @@ my_prior = return_prior(nDims)
 
 info = yaml_load_file(yaml_filename)
 
-info_prior = {"my_prior": my_prior}
+#info_prior = {"my_prior": my_prior}
 info_params = get_input_params_dict(nDims, xlim, ylim, info_params = info['params'])
 info_theory = {"my_theory": FeaturePrimordialPk, 'camb': {'external_primordial_pk': True}}
 info_output = update_output(info, nDims)
 
-info['prior'] = info_prior
+#info['prior'] = info_prior
 info['params'] = info_params
 info['theory'] = info_theory
 info['output'] = info_output
+info['likelihood']['my_prior'] = my_prior
 
 updated_info, sampler = run(info, test = test, debug = debug)
 

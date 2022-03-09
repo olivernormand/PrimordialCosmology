@@ -31,4 +31,4 @@ sampler:
     path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
     nlive: 200
 timing: True
-output: output/primordial_ps
+output: output_/primordial_ps
