@@ -46,3 +46,5 @@ playground/toy_models/.gitignore
 cosmology/job_directories/primordial_ps/output.txt
 cosmology/job_directories/primordial_ps/machine.file.56605860
 cosmology/job_directories/primordial_ps/machine.file.56605916
+cosmology/.gitignore
+cosmology/job_directories/primordial_ps/output_
