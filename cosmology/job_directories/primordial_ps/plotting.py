@@ -12,6 +12,7 @@ xlim = [-4, -0.3]
 ylim = [2,4]
 
 # generate_plot(file_root_fixedtau, nDims, xlim, ylim, title = title)
+# 
 
 nDims = [8, 8]
 file_roots = [file_root_fixedtau, file_root_tightpriors]
