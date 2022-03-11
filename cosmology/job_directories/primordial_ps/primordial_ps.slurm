@@ -10,7 +10,7 @@
 
 #! sbatch directives begin here ###############################
 #! Name of the job:
-#SBATCH -J primordial_ps_ndims6
+#SBATCH -J primordial_ps
 #! Which project should be charged:
 #SBATCH -A HANDLEY-SL3-CPU
 #SBATCH -p cclake
@@ -60,10 +60,10 @@ module load rhel7/default-ccl              # REQUIRED - loads the basic environm
 
 #! Insert additional module load commands after this line if needed:
 module load python/3.8
-source /home/ocn22/environments/cobaya_env/env/bin/activate
+source /home/ocn22/environments/cobaya_env2/env/bin/activate
 
 #! Full path to application executable:
-application="/home/ocn22/environments/cobaya_env/env/bin/python"
+application="/home/ocn22/environments/cobaya_env2/env/bin/python"
 
 #! Run options for the application:
 options="/home/ocn22/cosmology/job_directories/primordial_ps/run.py"

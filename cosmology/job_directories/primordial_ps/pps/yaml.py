@@ -1,6 +1,32 @@
 import numpy as np
 
-def get_input_params_dict(nDims, info_params = {}):
+def use_tight_priors(info, n_std = 5, tight = None, fixed = None, exclude = 'mnu'):
+    info_params = info['params']
+
+    for key in info_params.keys():
+        if key in exclude:
+            continue
+    
+        if fixed and key in fixed:
+            loc = info_params[key]['ref']['loc']
+            info_params[key] = loc
+            continue
+        
+        if tight and key in tight: 
+            loc = info_params[key]['ref']['loc']
+            std = info_params[key]['ref']['scale']
+            info_params[key] = {'prior': {'min': loc - n_std * std, 'max': loc + n_std * std}, 'latex': info_params[key]['latex']}
+            continue
+
+        if tight == 'all':
+            loc = info_params[key]['ref']['loc']
+            std = info_params[key]['ref']['scale']
+            info_params[key] = {'prior': {'min': loc - n_std * std, 'max': loc + n_std * std}, 'latex': info_params[key]['latex']}
+
+    return info_params
+
+
+def get_updated_params(nDims, info):
     """
         Adds the primordial power spectra parameters to the info dictionary. 
 
@@ -10,6 +36,10 @@ def get_input_params_dict(nDims, info_params = {}):
         If you have xlims and ylims for the coordinates in the primordial power spectrum, these are 
         dealt with elsewhere.
     """
+    try:
+        info_params = info['params']
+    except KeyError:
+        info_params = {}
     assert nDims % 2 == 0
     nPoints = (nDims + 2) // 2
 
@@ -19,11 +49,11 @@ def get_input_params_dict(nDims, info_params = {}):
         info_params['y' + str(i)] = {'prior': {'min': 0, 'max': 1}}
     return info_params
 
-def update_output(info, nDims):
+def get_updated_output(nInternalPoints, info):
     try:
-        new_output = info['output'] + '_nDims' + \
-            str(nDims) + 'nLive' + str(info['sampler']['polychord']['nlive'])
+        new_output = info['output'] + '_nInternalPoints' + \
+            str(nInternalPoints) + 'nLive' + str(info['sampler']['polychord']['nlive'])
     except KeyError:
-        new_output = info['output'] + '_nDims' + str(nDims)
+        new_output = info['output'] + '_nInternalPoints' + str(nInternalPoints)
 
     return new_output

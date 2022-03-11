@@ -29,6 +29,6 @@ params:
 sampler:
   polychord:
     path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
-    nlive: 200
+    nlive: 100
 timing: True
-output: output_/primordial_ps
+output: output/primordial_ps
