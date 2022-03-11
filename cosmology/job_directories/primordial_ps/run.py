@@ -1,7 +1,7 @@
 from cobaya.yaml import yaml_load_file
 from cobaya.run import run
 from cobaya.theory import Theory
-from PowerSpectraModule import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra, update_output
+from pps import return_prior, get_input_params_dict, get_params_from_nDims, power_spectra, update_output
 import numpy as np
 
 test = False
