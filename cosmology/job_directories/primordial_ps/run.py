@@ -6,7 +6,7 @@ import numpy as np
 
 test = False
 debug = False
-nDims = 8
+nDims = 18
 xlim = [-4, -0.3]
 ylim = [2, 4]
 yaml_filename = 'tightpriors.yaml'

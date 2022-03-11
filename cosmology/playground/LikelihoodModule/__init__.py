@@ -112,9 +112,9 @@ class ModelLikelihood():
         node_y = theta[nDims//2-1:]
         # Check that the x values are sufficiently well spaced, otherwise return a low likelihood
         dx = np.diff(node_x)
-        dx_less = np.less_equal(dx, 1e-5)
+        dx_less = np.less_equal(dx, 1e-10)
         if np.any(dx_less):
-            return -300.0, []
+            return -1e30, []
         # And if that's all fine, then we can return to working out the actual likelihood
         m, c = self.nodes_to_line(node_x, node_y)
 
@@ -148,7 +148,7 @@ class ModelLikelihood():
         # And now we check for nan, so if nan, then we say this is very unlikely indeed
         # Note we've already checked earlier to make sure that the x coordinates aren't too finely spaced, so this should go some way to resolving this.
         if np.isnan(logL):
-            return -300.0, []
+            return -1e28, []
         return logL, []
 
     def get_input_params(self):

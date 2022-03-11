@@ -1,13 +1,10 @@
 from cobaya.run import run
 import numpy as np
-import pypolychord
-import cobaya
 
 import numpy as np
 from LikelihoodModule import ModelLikelihood, line, sin2pi
 from cobaya.yaml import yaml_load_file
 
-myglobalvariable = 1234
 # This step is essential to avoid the cobaya not finding the argument self at some point. Makes me very sad.
 def my_like(**kwargs):
     theta = [kwargs[p] for p in input_params]
@@ -70,12 +67,12 @@ def generate_lambda(nDims):
     x_string = x_string[:-2]
 
     string = 'lambda ' + x_string + \
-        ' : -300 if np.any(np.less_equal(np.diff(np.array([' + x_string + '])), 0)) else 0'
+        ' : -1e30 if np.any(np.less_equal(np.diff(np.array([' + x_string + '])), 0)) else 0'
 
     return eval(string)
 
 
-nDims = 8
+nDims = 18
 yaml_filename = 'polychord.yaml'
 
 likelihood = ModelLikelihood(nDims=nDims, f = sin2pi, seed=2, sigma=0.025)
