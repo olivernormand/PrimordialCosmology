@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from fgivenx import plot_contours, samples_from_getdist_chains
 
-
-from theory import get_params_from_nDims, plf
+from pps.theory import get_params_from_nDims, plf
+from pps.priors import UniformPrior, SortedUniformPrior, hypercube_to_theta
 
 
 def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
@@ -13,8 +13,15 @@ def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
 
     x = np.linspace(xlim[0], xlim[1], 200)
 
+    x_prior = SortedUniformPrior(xlim[0], xlim[1])
+    y_prior = UniformPrior(ylim[0], ylim[1])
+
+    def plf_adjusted(x, hypercube):
+        theta = hypercube_to_theta(hypercube, x_prior, y_prior)
+        return plf(x, theta)
+
     fig, axs = plt.subplots()
-    cbar = plot_contours(plf, x, samples, axs, weights=weights, ny = 500)
+    cbar = plot_contours(plf_adjusted, x, samples, axs, weights=weights, ny = 500)
     cbar = plt.colorbar(cbar, ticks=[0, 1, 2, 3])
     cbar.set_ticklabels(['', r'$1\sigma$', r'$2\sigma$', r'$3\sigma$'])
 

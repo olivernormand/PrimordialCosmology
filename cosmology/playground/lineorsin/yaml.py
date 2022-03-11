@@ -1,25 +1,18 @@
-def get_input_params(self):
-    nDims = self.nDims
+def get_input_params_dict(nDims, info_params = {}):
+    """
+        Adds the primordial power spectra parameters to the info dictionary. 
+
+        We pass the x and y values as uniform distributions across the unit hypercube to cobaya
+        and subsequently transform in the likelihood to the values of interest. 
+
+        If you have xlims and ylims for the coordinates in the primordial power spectrum, these are 
+        dealt with elsewhere.
+    """
     assert nDims % 2 == 0
     nPoints = (nDims + 2) // 2
-    input_params = []
-    for i in range(1, nPoints - 1):
-        input_params.append('x' + str(i))
-    for i in range(nPoints):
-        input_params.append('y' + str(i))
-    return input_params
-
-def get_input_params_dict(self):
-    nDims = self.nDims
-    xmin, xmax = self.xlim
-    ymin, ymax = self.ylim
-
-    assert nDims % 2 == 0
-    nPoints = (nDims + 2) // 2
-    info_params = {}
 
     for i in range(1, nPoints - 1):
-        info_params['x' + str(i)] = {'prior': {'min': xmin, 'max': xmax}}
+        info_params['x' + str(i)] = {'prior': {'min': 0, 'max': 1}}
     for i in range(nPoints):
-        info_params['y' + str(i)] = {'prior': {'min': ymin, 'max': ymax}}
+        info_params['y' + str(i)] = {'prior': {'min': 0, 'max': 1}}
     return info_params

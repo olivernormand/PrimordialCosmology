@@ -1,6 +1,6 @@
 sampler:
   polychord:
     path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
-    nlive: 10
+    nlive: 100
 
-output: chains/model_comparison
+output: chains/model_comparison_18
