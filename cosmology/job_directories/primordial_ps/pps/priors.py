@@ -30,3 +30,4 @@ def reverse_fit(t):
     for n in range(N-2, -1, -1):
         x[n] = (t[n] / t[n+1]) ** (n+1)
     return x
+
