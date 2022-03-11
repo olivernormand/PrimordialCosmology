@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pps.PowerSpectraModule import generate_plot, generate_plot_overlay, true_power_spectra
+from pps import generate_plot, generate_plot_overlay, true_power_spectra
 
 file_root_likelihood = "output_tightpriors/primordial_ps_likelihood_nDims8nLive100_polychord_raw/primordial_ps_likelihood_nDims8nLive100"
 file_root_tightpriors = "output_tightpriors/primordial_ps_nDims8nLive100_polychord_raw/primordial_ps_nDims8nLive100"
