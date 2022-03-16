@@ -18,7 +18,7 @@ def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
 
     def plf_adjusted(x, hypercube):
         theta = hypercube_to_theta(hypercube, x_prior, y_prior)
-        return plf(x, theta)
+        return plf(x, theta, xlim)
 
     fig, axs = plt.subplots()
     cbar = plot_contours(plf_adjusted, x, samples, axs, weights=weights, ny = 500)
