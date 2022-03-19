@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from fgivenx import plot_contours, samples_from_getdist_chains
+from fgivenx import plot_contours, plot_dkl, samples_from_getdist_chains
 
 from pps.theory import get_params_from_nDims, plf
 from pps.priors import UniformPrior, SortedUniformPrior, hypercube_to_theta
@@ -33,6 +33,47 @@ def generate_plot(file_root, nDims, xlim, ylim, title=None, plot_function=None):
 
     if plot_function:
         axs.plot(x, plot_function(x), 'g')
+
+    fig.tight_layout()
+    plt.savefig('output.png')
+
+def generate_dkl_plot(file_roots, nDims_list, xlim, ylim, title = None):
+    N = len(file_roots)
+    
+    samples = [None] * N
+    weights = [None] * N
+    prior_samples = None
+
+    for i in range(N):
+        nDims = nDims_list[i]
+        params_list, _ = get_params_from_nDims(nDims)
+        file_root = file_roots[i]
+        sample, weight = samples_from_getdist_chains(params_list, file_root)
+        samples[i] = sample 
+        weights[i] = weight
+
+    for sample in samples:
+        print(sample.shape)
+
+    x = np.linspace(xlim[0], xlim[1], 200)
+
+    x_prior = SortedUniformPrior(xlim[0], xlim[1])
+    y_prior = UniformPrior(ylim[0], ylim[1])
+
+    def plf_adjusted(x, hypercube):
+        theta = hypercube_to_theta(hypercube, x_prior, y_prior)
+        return plf(x, theta, xlim)
+
+    fig, axs = plt.subplots()
+    cbar = plot_dkl(plf_adjusted, x, samples, prior_samples, axs, weights = weights)
+    cbar = plt.colorbar(cbar, ticks=[0, 1, 2, 3])
+    cbar.set_ticklabels(['', r'$1\sigma$', r'$2\sigma$', r'$3\sigma$'])
+
+    if title:
+        axs.set_title(title)
+    axs.set_ylim(ylim)
+    axs.set_ylabel('y')
+    axs.set_xlabel('x')
 
     fig.tight_layout()
     plt.savefig('output.png')
