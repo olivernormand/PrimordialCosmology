@@ -9,7 +9,7 @@ import numpy as np
 def forward_fit(x):
     """
         Takes unsorted values x from the uniform hypercube between 0 and 1
-        Returns sorted values t between 0 and 1
+        Returns sorted values t between 0 and 1 such that there is a uniform distribution of sorted points. 
     """
     N = len(x)
     t = np.zeros(N)
@@ -63,10 +63,13 @@ class SortedUniformPrior(UniformPrior):
 def hypercube_to_theta(hypercube, x_transform, y_transform):
     nDims = len(hypercube)
     assert nDims % 2 == 0
-    x_nodes = x_transform(hypercube[:nDims//2 - 1])
-    y_nodes = y_transform(hypercube[nDims//2 - 1:])
+    if nDims == 2: # No internal points so transform only y coordinates
+        return y_transform(hypercube)
+    else:
+        x_nodes = x_transform(hypercube[:nDims//2 - 1])
+        y_nodes = y_transform(hypercube[nDims//2 - 1:])
 
-    return np.concatenate([x_nodes, y_nodes])
+        return np.concatenate([x_nodes, y_nodes])
 
 def theta_to_hypercube(theta, x_inverse_transform, y_inverse_transform):
     
