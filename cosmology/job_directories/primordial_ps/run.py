@@ -11,12 +11,12 @@ from pps.yaml import get_updated_params, get_updated_output, use_tight_priors
 test = False
 debug = False
 resume = True
-nInternalPoints = 6
+nInternalPoints = 1
 xlim = [-4, -0.3]
 ylim = [2, 4]
 yaml_filename = 'camb.yaml'
 tight_priors = None
-fixed_priors = None
+fixed_priors = 'ombh2'
 
 nDims = nInternalPoints * 2 + 2
 
