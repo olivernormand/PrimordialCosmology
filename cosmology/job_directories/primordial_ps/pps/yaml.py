@@ -49,11 +49,18 @@ def get_updated_params(nDims, info):
         info_params['y' + str(i)] = {'prior': {'min': 0, 'max': 1}}
     return info_params
 
-def get_updated_output(nInternalPoints, info):
+def get_updated_output(nInternalPoints, info, fixed = None):
+    output_str = 'chains/output_full'
+
+    if fixed:
+        assert type(fixed) == str # checks against the case where we pass a list
+        output_str = output_str + '_fixed_' + fixed + '/primordial_ps'
+    
     try:
-        new_output = info['output'] + '_nInternalPoints' + \
+        new_output = output_str + '_nInternalPoints' + \
             str(nInternalPoints) + 'nLive' + str(info['sampler']['polychord']['nlive'])
     except KeyError:
-        new_output = info['output'] + '_nInternalPoints' + str(nInternalPoints)
+        new_output = output_str + '_nInternalPoints' + str(nInternalPoints)
 
+    print(new_output)
     return new_output

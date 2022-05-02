@@ -15,11 +15,11 @@
 #SBATCH -A HANDLEY-SL2-CPU
 #SBATCH -p cclake
 #! How many whole nodes should be allocated?
-#SBATCH --nodes=8
+#SBATCH --nodes=1
 #! How many (MPI) tasks will there be in total? (<= nodes*56)
 #! The Cascade Lake (cclake) nodes have 56 CPUs (cores) each and
 #! 3420 MiB of memory per CPU.
-#SBATCH --ntasks=448
+#SBATCH --ntasks=1
 #! How much wallclock time will be required?
 #SBATCH --time=12:00:00
 #! What types of email messages do you wish to receive?
@@ -66,7 +66,7 @@ source /home/ocn22/environments/cobaya_env2/env/bin/activate
 application="/home/ocn22/environments/cobaya_env2/env/bin/python"
 
 #! Run options for the application:
-options="/home/ocn22/cosmology/job_directories/primordial_ps/run.py"
+options="/home/ocn22/cosmology/job_directories/primordial_ps/plotting.py"
 
 #! Work directory (i.e. where the job will run):
 workdir="/home/ocn22/cosmology/job_directories/primordial_ps"  # The value of SLURM_SUBMIT_DIR sets workdir to the directory
@@ -92,11 +92,11 @@ export I_MPI_PIN_ORDER=scatter # Adjacent domains have minimal sharing of caches
 #! Uncomment one choice for CMD below (add mpirun/mpiexec options if necessary):
 
 #! Choose this for a MPI code (possibly using OpenMP) using Intel MPI.
-CMD="mpirun -ppn $mpi_tasks_per_node -np $np $application $options"
+#! CMD="mpirun -ppn $mpi_tasks_per_node -np $np $application $options"
 
 #! Choose this for a pure shared-memory OpenMP parallel program on a single node:
 #! (OMP_NUM_THREADS threads will be created):
-#CMD="$application $options"
+CMD="$application $options"
 
 #! Choose this for a MPI code (possibly using OpenMP) using OpenMPI:
 #CMD="mpirun -npernode $mpi_tasks_per_node -np $np $application $options"

@@ -80,4 +80,13 @@ def theta_to_hypercube(theta, x_inverse_transform, y_inverse_transform):
 
     return np.concatenate([x_nodes, y_nodes])
 
+def get_prior_samples(samples):
+    # Yes our prior samples are really this easy, but we want to make them repeatable please
+    np.random.seed(0)
+    return np.random.random(samples.shape)
+
+def get_prior_weights(weights):
+    return np.ones(weights.shape)
+
+
 

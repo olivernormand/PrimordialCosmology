@@ -8,10 +8,10 @@ from pps.priors import SortedUniformPrior, UniformPrior, hypercube_to_theta
 from pps.theory import get_params_from_nDims, power_spectra
 from pps.yaml import get_updated_params, get_updated_output, use_tight_priors
 
-test = False
+test = True
 debug = False
 resume = True
-nInternalPoints = 1
+nInternalPoints = 2
 xlim = [-4, -0.3]
 ylim = [2, 4]
 yaml_filename = 'camb.yaml'
@@ -51,11 +51,12 @@ info = yaml_load_file(yaml_filename)
 info_params = use_tight_priors(info, fixed = fixed_priors, tight = tight_priors)
 info_params = get_updated_params(nDims, info)
 info_theory = {"my_theory": FeaturePrimordialPk, 'camb': {'external_primordial_pk': True}}
-info_output = get_updated_output(nInternalPoints, info)
+info_output = get_updated_output(nInternalPoints, info, fixed = fixed_priors)
 
 info['params'] = info_params
 info['theory'] = info_theory
 info['output'] = info_output
+print(info)
 
 updated_info, sampler = run(info, test = test, debug = debug, resume = resume)
 
