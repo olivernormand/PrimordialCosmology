@@ -181,7 +181,9 @@ def generate_plots_array(nInternalPoints_list, fixed, xlim, ylim):
     plt.savefig('output.eps', format = 'eps')
 
 def generate_marginalised_posterior_array(nInternalPoints = np.array([0,1,2,3,4,5,6,7]), xlim = [-4, -0.3], ylim = [2,4]):
-    
+    """
+        Generates an array of marginalised posterior plots
+    """
 
     legends = ['All Free', 'All Fixed', r'Fixed $H_0$', r'Fixed $\Omega_bh^2$', r'Fixed $\Omega_ch^2$', r'Fixed $\tau$']
     parameters = [None, 'all', 'H0', 'ombh2', 'omch2', 'tau']
@@ -262,7 +264,10 @@ def generate_dkl(nInternalPoints_list, fixed, xlim, ylim, fig_title = None, fig_
     return dkl
 
 def generate_dkl_new(fixed = None, nInternalPoints = np.array([0,1,2,3,4,5,6,7]), xlim =  [-4, -0.3], ylim = [2, 4], nX = 100, rds = True):
-    
+    """
+        Corrected implementation of the dkl value
+    """
+
     Zs = np.zeros(len(nInternalPoints))
     dkls = np.zeros([len(nInternalPoints), nX])
 
@@ -468,8 +473,6 @@ def extend_samples(samples):
 def manipulate_axes(axs, dkl = True, plot_xlabel = True, plot_ylabel = True, plot_xlabel_top = True, xlim = [-4, -0.3]):
     """
         Applies the axes manipulations required to add internal ticks to a plot and correct labeling. 
-        
-        TODO make this compatible with optional x and y labelling
     """
     # Adjust the xlabels
     xaxistwin = axs.twiny()

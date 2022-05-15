@@ -43,6 +43,9 @@ def return_linear_function(xi, xi1, yi, yi1):
     return func
 
 def get_params_from_nDims(nDims):
+    """
+        Returns the parameter dictionary necessary to get parameters from getdist chains
+    """
     params_list = []
     params_dict = {}
     nX = (nDims + 2) // 2
@@ -65,8 +68,6 @@ def power_spectra(ks, theta, xlim):
     lntentenPks = plf(log10ks, theta, xlim = xlim)
 
     Pks = 1e-10 * np.exp(lntentenPks)
-
-    # print('printing', np.mean(log10ks), np.mean(lntentenPks), np.mean(ks), np.mean(Pks))
 
     return ks, Pks
 

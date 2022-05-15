@@ -61,6 +61,9 @@ class SortedUniformPrior(UniformPrior):
         return inverse_fit(t)
 
 def hypercube_to_theta(hypercube, x_transform, y_transform):
+    """
+        Converts from the uniformly distributed hypercube to the PPS parameters theta
+    """
     nDims = len(hypercube)
     assert nDims % 2 == 0
     if nDims == 2: # No internal points so transform only y coordinates
@@ -72,6 +75,9 @@ def hypercube_to_theta(hypercube, x_transform, y_transform):
         return np.concatenate([x_nodes, y_nodes])
 
 def theta_to_hypercube(theta, x_inverse_transform, y_inverse_transform):
+    """
+        Converts from the PPS parameters theta to the uniformly distributed hypercube.
+    """
     
     nDims = len(theta)
     assert nDims % 2 == 0

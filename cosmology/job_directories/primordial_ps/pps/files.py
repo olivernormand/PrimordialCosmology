@@ -48,6 +48,9 @@ def run_exists(nInternalPoints, parameter, rds = True):
     return exists(root)
 
 def return_valid_internal_points(parameters):
+    """
+        Returns the nInternalPoints for the completed cosmology runs
+    """
     N = len(parameters)
     nInternalPoints = [None] * N 
 

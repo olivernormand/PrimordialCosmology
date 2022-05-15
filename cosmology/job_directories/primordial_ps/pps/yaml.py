@@ -1,6 +1,9 @@
 import numpy as np
 
 def use_tight_priors(info, n_std = 5, tight = None, fixed = None, exclude = 'mnu'):
+    """
+        Enables the yaml dictionary to be updated programatically by specifying the fixed and tight priors. 
+    """
     info_params = info['params']
 
     for key in info_params.keys():

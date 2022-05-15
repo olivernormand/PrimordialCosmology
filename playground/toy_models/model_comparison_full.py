@@ -84,7 +84,9 @@ def prior_sample_from_sample(sample, xlim = [0,1], ylim = [-2, 2]):
     return prior_sample
 
 class ModelLikelihood():
-    """docstring for ModelLikelihood."""
+    """
+        Generates a single model dataset, and enables a likelihood to be determined
+    """
 
     def __init__(self, nDims = 6, nDerived = 0, f = line, sigma = 0.05, N = 50, xlim = [0, 1], seed = 0):
         self.nDims = nDims
@@ -97,6 +99,9 @@ class ModelLikelihood():
         self.generate_data(seed = seed)
 
     def generate_data(self, seed = None):
+        """
+            Generates a dataset for the model
+        """
         if seed is not None: np.random.seed(seed)
 
         mean = 0
@@ -115,6 +120,9 @@ class ModelLikelihood():
         self.y = np.take(self.y, indexes)
 
     def nodes_to_line(self, x, y):
+        """
+            Given a set of x and y nodes, will generate the corresponding gradients and intercepts. 
+        """
         delta_x = np.diff(x); delta_y = np.diff(y)
 
         m = delta_y / delta_x
@@ -129,6 +137,9 @@ class ModelLikelihood():
         plt.savefig('data.png')
 
     def __call__(self, theta):
+        """
+            Likelihood call using the erf method and logsumexp
+        """
 
         # Check that theta values correspond to a valid set of nodes
         nDims = len(theta)
@@ -180,6 +191,9 @@ class ModelLikelihood():
         return logL, []
 
     def old__call__(self, theta):
+        """
+            Likelihood call using the erf method, but not logsumexp
+        """
 
         # Check that theta values correspond to a valid set of nodes
         nDims = len(theta)
@@ -293,6 +307,9 @@ class ModelLikelihood():
         return valid
 
 class ModelComparisonRun():
+    """
+        Implements a set of runs for different models
+    """
 
     def __init__(self, nDims, nDerived, nLive, method, N, sigma, seed, plotting = True):
         # Make all objects such that they are 1D numpy arrays
@@ -311,6 +328,9 @@ class ModelComparisonRun():
         print("Total number of models: {}".format(self.n))
 
     def return_evidence(self, file_root, add_chains = True):
+        """
+            Returns the evidence for a given model
+        """
         if add_chains:
             file_root = 'chains/' + file_root + '.stats'
         else:
@@ -325,6 +345,9 @@ class ModelComparisonRun():
         return logZ, logZerr
 
     def numpy_compatible(self, x):
+        """
+            Ensures that the methods are compatible with numpy
+        """
         if type(x) != np.ndarray:
             x = np.array(x)
         if len(x.shape) == 0:
