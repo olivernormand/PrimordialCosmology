@@ -23,8 +23,11 @@ def use_tight_priors(info, n_std = 5, tight = None, fixed = None, exclude = 'mnu
             std = info_params[key]['ref']['scale']
             info_params[key] = {'prior': {'min': loc - n_std * std, 'max': loc + n_std * std}, 'latex': info_params[key]['latex']}
 
-    return info_params
+        if fixed == 'all':
+            loc = info_params[key]['ref']['loc']
+            info_params[key] = loc
 
+    return info_params
 
 def get_updated_params(nDims, info):
     """
@@ -50,11 +53,13 @@ def get_updated_params(nDims, info):
     return info_params
 
 def get_updated_output(nInternalPoints, info, fixed = None):
-    output_str = 'chains/output_full'
+    output_str = 'chains/output_full_newer'
 
     if fixed:
         assert type(fixed) == str # checks against the case where we pass a list
         output_str = output_str + '_fixed_' + fixed + '/primordial_ps'
+    else:
+        output_str = output_str + '/primordial_ps'
     
     try:
         new_output = output_str + '_nInternalPoints' + \

@@ -24,7 +24,7 @@ def plf(x, theta, xlim = [-4, -0.3]):
     # Generate the condition list
     for i in range(N-1):
         cond_list.append(np.logical_and(
-            np.where(x > node_x[i], True, False), np.where(x < node_x[i+1], True, False)))
+            np.where(x >= node_x[i], True, False), np.where(x <= node_x[i+1], True, False)))
 
     # Generate the function list
     for i in range(N-1):
@@ -35,6 +35,10 @@ def plf(x, theta, xlim = [-4, -0.3]):
 
 def return_linear_function(xi, xi1, yi, yi1):
     def func(x):
+        # Check for overlapping nodes and deal with those as necessary
+        if xi1 == xi: # then the nodes are on top of one another
+            return np.ones(len(x)) * 0.5 * (yi + yi1)
+        
         return (yi * (xi1 - x) + yi1 * (x - xi)) / (xi1 - xi)
     return func
 

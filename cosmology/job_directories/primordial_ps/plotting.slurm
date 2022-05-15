@@ -21,7 +21,7 @@
 #! 3420 MiB of memory per CPU.
 #SBATCH --ntasks=1
 #! How much wallclock time will be required?
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 #! What types of email messages do you wish to receive?
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ocn22@cam.ac.uk

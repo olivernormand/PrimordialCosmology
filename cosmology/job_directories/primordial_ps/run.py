@@ -8,15 +8,15 @@ from pps.priors import SortedUniformPrior, UniformPrior, hypercube_to_theta
 from pps.theory import get_params_from_nDims, power_spectra
 from pps.yaml import get_updated_params, get_updated_output, use_tight_priors
 
-test = True
+test = False
 debug = False
 resume = True
-nInternalPoints = 2
+nInternalPoints = 1
 xlim = [-4, -0.3]
 ylim = [2, 4]
 yaml_filename = 'camb.yaml'
 tight_priors = None
-fixed_priors = 'ombh2'
+fixed_priors = None
 
 nDims = nInternalPoints * 2 + 2
 
@@ -56,7 +56,6 @@ info_output = get_updated_output(nInternalPoints, info, fixed = fixed_priors)
 info['params'] = info_params
 info['theory'] = info_theory
 info['output'] = info_output
-print(info)
 
 updated_info, sampler = run(info, test = test, debug = debug, resume = resume)
 

@@ -15,13 +15,13 @@
 #SBATCH -A HANDLEY-SL2-CPU
 #SBATCH -p cclake
 #! How many whole nodes should be allocated?
-#SBATCH --nodes=8
+#SBATCH --nodes=13
 #! How many (MPI) tasks will there be in total? (<= nodes*56)
 #! The Cascade Lake (cclake) nodes have 56 CPUs (cores) each and
 #! 3420 MiB of memory per CPU.
-#SBATCH --ntasks=448
+#SBATCH --ntasks=728
 #! How much wallclock time will be required?
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 #! What types of email messages do you wish to receive?
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ocn22@cam.ac.uk

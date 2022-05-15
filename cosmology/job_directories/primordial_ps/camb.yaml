@@ -28,7 +28,7 @@ params:
     latex: \tau_\mathrm{reio}
 sampler:
   polychord:
-    path: /home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite
+    path: /home/ocn22/environments/cobaya_env2/env/lib/python3.8/PolyChordLite
     nlive: 800
 timing: True
 output: output_full/primordial_ps

@@ -12,7 +12,7 @@
 #! Name of the job:
 #SBATCH -J lineorsin_full
 #! Which project should be charged:
-#SBATCH -A HANDLEY-SL3-CPU
+#SBATCH -A HANDLEY-SL2-CPU
 #! How many whole nodes should be allocated?
 #SBATCH --nodes=1
 #! How many (MPI) tasks will there be in total? (<= nodes*56)
@@ -31,7 +31,7 @@
 #SBATCH -e /home/ocn22/errs/%j.err
 
 #! For 6GB per CPU, set "-p skylake"; for 12GB per CPU, set "-p skylake-himem":
-#SBATCH -p cclake
+#SBATCH -p skylake-himem
 
 #! sbatch directives end here (put any additional directives above this line)
 
@@ -59,10 +59,10 @@ module purge                               # Removes all modules still loaded
 module load rhel7/default-peta4            # REQUIRED - loads the basic environment
 #! Insert additional module load commands after this line if needed:
 module load python/3.8
-source /home/ocn22/environments/cobaya_env/env/bin/activate
+source /home/ocn22/environments/cobaya_env2/env/bin/activate
 
 #! Full path to application executable:
-application="/home/ocn22/environments/cobaya_env/env/bin/python"
+application="/home/ocn22/environments/cobaya_env2/env/bin/python"
 
 #! Run options for the application:
 options="/home/ocn22/playground/toy_models/model_comparison_full.py"
