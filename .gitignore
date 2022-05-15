@@ -26,7 +26,6 @@
 /.ssh
 /.viminfo
 /.vscode-server
-/environments
 /errs
 /intel
 /logs
@@ -54,3 +53,6 @@
 /playground/cobaya_playground
 /playground/bayesian_model_selection.py
 /playground/toy_models/cache
+
+/environments/cobaya_env2
+/environments/old_cobaya_install.sh
