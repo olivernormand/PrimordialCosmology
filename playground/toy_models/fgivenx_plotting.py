@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from fgivenx import plot_contours, samples_from_getdist_chains
 
-file_root = 'chains/line6nodes_new'
-samples, weights = samples_from_getdist_chains(['p%i' % i for i in range(6)], file_root)
+
+file_root = "/rds/user/ocn22/hpc-work/lineorsin/chains_old2/12nDims400nLiveSin50N50sigma"
+samples, weights = samples_from_getdist_chains(['p%i' % i for i in range(12)], file_root)
 
 def plf(x, theta):
     nDims = len(theta)

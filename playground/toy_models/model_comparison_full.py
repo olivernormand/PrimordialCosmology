@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import scipy.special
 import pypolychord
 from pypolychord.settings import PolyChordSettings
-from pypolychord.priors import UniformPrior, SortedUniformPrior
 try:
     from mpi4py import MPI
 except ImportError:
@@ -12,6 +11,12 @@ from fgivenx import plot_contours, samples_from_getdist_chains
 import csv
 from scipy.integrate import quad
 import time
+
+import sys
+sys.path.insert(1, '/home/ocn22/cosmology/job_directories/primordial_ps')
+from pps.plotting import extend_samples
+from pps.priors import get_prior_samples, get_prior_weights, UniformPrior, SortedUniformPrior, hypercube_to_theta
+
 
 def line(x):
     """ Returns a line(2 pi x) function """
@@ -66,8 +71,22 @@ def return_linear_function(xi, xi1, yi, yi1):
         return ( yi * (xi1 - x) + yi1 * (x - xi) ) / (xi1 - xi)
     return func
 
+def prior_sample_from_sample(sample, xlim = [0,1], ylim = [-2, 2]):
+    x_prior = SortedUniformPrior(xlim[0], xlim[1])
+    y_prior = UniformPrior(ylim[0], ylim[1])
+
+    prior_sample = np.zeros(sample.shape)
+    n, nDims = sample.shape
+
+    for i in range(n):
+        prior_sample[i,:] = hypercube_to_theta(sample[i,:], x_prior, y_prior)
+
+    return prior_sample
+
 class ModelLikelihood():
-    """docstring for ModelLikelihood."""
+    """
+        Generates a single model dataset, and enables a likelihood to be determined
+    """
 
     def __init__(self, nDims = 6, nDerived = 0, f = line, sigma = 0.05, N = 50, xlim = [0, 1], seed = 0):
         self.nDims = nDims
@@ -80,6 +99,9 @@ class ModelLikelihood():
         self.generate_data(seed = seed)
 
     def generate_data(self, seed = None):
+        """
+            Generates a dataset for the model
+        """
         if seed is not None: np.random.seed(seed)
 
         mean = 0
@@ -98,6 +120,9 @@ class ModelLikelihood():
         self.y = np.take(self.y, indexes)
 
     def nodes_to_line(self, x, y):
+        """
+            Given a set of x and y nodes, will generate the corresponding gradients and intercepts. 
+        """
         delta_x = np.diff(x); delta_y = np.diff(y)
 
         m = delta_y / delta_x
@@ -112,6 +137,9 @@ class ModelLikelihood():
         plt.savefig('data.png')
 
     def __call__(self, theta):
+        """
+            Likelihood call using the erf method and logsumexp
+        """
 
         # Check that theta values correspond to a valid set of nodes
         nDims = len(theta)
@@ -163,6 +191,9 @@ class ModelLikelihood():
         return logL, []
 
     def old__call__(self, theta):
+        """
+            Likelihood call using the erf method, but not logsumexp
+        """
 
         # Check that theta values correspond to a valid set of nodes
         nDims = len(theta)
@@ -276,6 +307,9 @@ class ModelLikelihood():
         return valid
 
 class ModelComparisonRun():
+    """
+        Implements a set of runs for different models
+    """
 
     def __init__(self, nDims, nDerived, nLive, method, N, sigma, seed, plotting = True):
         # Make all objects such that they are 1D numpy arrays
@@ -294,8 +328,13 @@ class ModelComparisonRun():
         print("Total number of models: {}".format(self.n))
 
     def return_evidence(self, file_root, add_chains = True):
+        """
+            Returns the evidence for a given model
+        """
         if add_chains:
             file_root = 'chains/' + file_root + '.stats'
+        else:
+            file_root = file_root + '.stats'
 
         with open(file_root) as file:
             lines = file.readlines()
@@ -306,6 +345,9 @@ class ModelComparisonRun():
         return logZ, logZerr
 
     def numpy_compatible(self, x):
+        """
+            Ensures that the methods are compatible with numpy
+        """
         if type(x) != np.ndarray:
             x = np.array(x)
         if len(x.shape) == 0:
@@ -338,6 +380,60 @@ class ModelComparisonRun():
 
         fig.tight_layout()
         plt.savefig('output_figures/' + plotting_file_root + '.png')
+
+    def generate_marginalised_plot(self, method, nLive, N, sigma, seed, nX = 100, nY = 500, plot_function = True, plot_data = False, axs = None):
+
+        if method == 'Line':
+            func = line
+        elif method == 'Sin':
+            func = sin2pi
+
+        likelihood = ModelLikelihood(10, 0, func, sigma, N, seed = seed)
+        
+        nDims_list = self.nDims
+        n = len(nDims_list)
+        samples = [None] * n
+        weights = [None] * n
+        prior_samples = [None] * n
+        prior_weights = [None] * n
+        logZ = [None] * n
+        logZerr = [None] * n
+        cache = 'cache/{}nLive{}{}N{}sigma{}nX{}nY'.format(nLive, method, N, int(sigma * 1000), nX, nY)
+        prior_cache = cache + '_prior'
+        
+        for i in range(n):
+            nDims = nDims_list[i]; print('nDims', nDims)
+            file_root = '/rds/user/ocn22/hpc-work/lineorsin/chains/{}nDims{}nLive{}{}N{}sigma'.format(nDims, nLive, method, N, int(sigma * 1000))
+            samples[i], weights[i] = samples_from_getdist_chains(['p%i' % i for i in range(nDims)], file_root)
+            logZ[i], logZerr[i] = self.return_evidence(file_root, add_chains = False)
+        
+        samples = extend_samples(samples)
+
+        for i in range(n):
+            prior_samples[i] = get_prior_samples(samples[i])
+            prior_samples[i] = prior_sample_from_sample(prior_samples[i])
+            prior_weights[i] = get_prior_weights(weights[i])
+
+        x = np.linspace(0, 1, nX)
+        f = [plf] * n
+
+        if not axs:
+            print('hi')
+            fig, axs = plt.subplots()
+
+        cbar = plot_contours(f, x, prior_samples, axs, logZ = logZ, weights = prior_weights, cache = prior_cache, colors=plt.cm.Blues_r, lines = False, ny = nY)
+        cbar = plot_contours(f, x, samples, axs, logZ = logZ, weights = weights, cache = cache, ny = nY)
+
+        axs.set_ylim([-2,2])
+
+        if plot_function: axs.plot(x, func(x), 'g')
+        if plot_data: axs.plot(likelihood.x, likelihood.y, 'b.', markersize = 2)
+
+        plt.savefig('thebestoutputintheworld.png')
+
+        return likelihood.x, likelihood.y, np.array(logZ), np.array(logZerr), cbar
+
+
 
     def evaluate(self):
         # Determine total number of models to compare
@@ -401,13 +497,113 @@ class ModelComparisonRun():
         return logZ, logZerr
 
 if __name__ == '__main__':
-    nDims = [6, 8, 10, 12, 14, 16, 18, 20]
+    nDims = [4, 6, 8, 10, 12, 14, 16, 18, 20]
+    #nDims = [4]
     nDerived = 0
-    nLive = 400
+    nLive = 800
     method = ['Line', 'Sin']
     N = 50
-    sigma = 0.05
+    sigma = 0.03
     seed = 2
+    nY = 50
+    figsize = (12, 4)
 
     run = ModelComparisonRun(nDims, nDerived, nLive, method, N, sigma, seed, plotting = True)
-    run.evaluate()
+    #run.evaluate()
+
+
+
+    ###
+    ### First plot over marginalised posterior
+    ###
+
+    fig, axs = plt.subplots(1, 2, figsize = figsize)
+    sinx, siny, sinlogZ, sinlogZerr, cbar = run.generate_marginalised_plot(method = 'Sin', nLive = nLive, N = N, sigma = sigma, seed = seed, nY = nY, axs = axs[0])
+    linx, liny, linlogZ, linlogZerr, cbar = run.generate_marginalised_plot(method = 'Line', nLive = nLive, N = N, sigma = sigma, seed = seed + 1, nY = nY, axs = axs[1])
+
+    print(len(sinlogZ), (sinlogZerr))
+
+    axs[0].set_title(r'sin$(2 \pi x)$')
+    axs[1].set_title(r'line$(2 \pi x)$')
+    axs[0].set_ylabel('y(x)')
+    axs[0].set_xlabel('x')
+    axs[1].set_xlabel('x')
+    axs[1].tick_params(axis = 'y', which  = 'both', left = True, direction = 'in', labelleft = False)
+
+    fig.tight_layout(rect = (0,0,0.96, 1))
+    cbar = fig.colorbar(cbar, ax = axs, fraction = 0.03, aspect = 50)
+    cbar.ax.tick_params(axis = 'y', which = 'both', direction = 'in')
+    cbar.ax.set_title(r'$\sigma$')
+
+    plt.savefig('marginalised_plot.eps', format = 'eps')
+
+
+    ###
+    ### Second plot of raw data
+    ###
+
+    sinx = np.squeeze(sinx); siny = np.squeeze(siny)
+    linx = np.squeeze(linx); liny = np.squeeze(liny)
+
+    print(sinx.shape, siny.shape, sinlogZ.shape, sinlogZerr.shape)
+
+    print('Number of sin: {}'.format(len(sinx)))
+    print('Number of lin: {}'.format(len(linx)))
+    print(sigma)
+
+    fig, axs = plt.subplots(1, 2, figsize = figsize)
+    axs[0].errorbar(sinx, siny, xerr = sigma, yerr = sigma, fmt = ',')
+    axs[1].errorbar(linx, liny, xerr = sigma, yerr = sigma, fmt = ',')
+
+    axs[0].set_title(r'sin(2$\pi$x) sampled points')
+    axs[1].set_title(r'line(2$\pi$x) sampled points')
+    axs[0].set_ylabel('y')
+    axs[0].set_xlabel('x')
+    axs[1].set_xlabel('x')
+    xlim = (-0.1, 1.1)
+    ylim = (-1.1, 1.1)
+    axs[0].set_xlim(xlim); axs[0].set_ylim(ylim)
+    axs[1].set_xlim(xlim); axs[1].set_ylim(ylim)
+    axs[1].tick_params(axis = 'y', which  = 'major', left = True, direction = 'in', labelleft = False)
+
+    fig.tight_layout()
+    plt.savefig('raw_data.eps', format = 'eps')
+
+    ###
+    ### Final plot for bayes ratio
+    ###
+
+    fig, axs = plt.subplots(1,2, figsize = figsize)
+
+    sinlogZ = sinlogZ - np.max(sinlogZ)
+    linlogZ = linlogZ - np.max(linlogZ)
+
+    axs[0].errorbar(np.arange(len(sinlogZ)) + 1, sinlogZ, yerr = sinlogZerr)
+    axs[1].errorbar(np.arange(len(linlogZ)) + 1, linlogZ, yerr = linlogZerr)
+
+    ylim = [-9, 0.5]
+    axs[0].set_ylim(ylim)
+    axs[1].set_ylim(ylim)
+
+    axs[0].set_title(r'sin(2$\pi$x) Bayes Factor')
+    axs[1].set_title(r'line(2$\pi$x) Bayes Factor')
+    axs[0].set_ylabel('Bayes Factor')
+    
+    axs[1].tick_params(axis = 'y', which  = 'both', left = True, direction = 'in', labelleft = False)
+
+    yaxis0twin = axs[0].twinx()
+    yaxis0twin.set_ylim(np.exp(ylim[0]), np.exp(ylim[1]))
+    yaxis0twin.set_yscale('log')
+    yaxis0twin.tick_params(axis = 'y', which = 'both', right = True, direction = 'in', labelright = False)
+
+    yaxis1twin = axs[1].twinx()
+    yaxis1twin.set_ylim(np.exp(ylim[0]), np.exp(ylim[1]))
+    yaxis1twin.set_yscale('log')
+    yaxis1twin.set_ylabel(r'Relative Evidence $\mathcal{Z}$')
+    yaxis1twin.tick_params(axis = 'y', which = 'both', right = True, direction = 'in', labelright = True)
+
+    axs[0].set_xlabel('Number of Internal Points N')
+    axs[1].set_xlabel('Number of Internal Points N')
+
+    fig.tight_layout()
+    fig.savefig('bayes_ratio.eps', format = 'eps')

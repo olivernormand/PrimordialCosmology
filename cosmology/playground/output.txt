@@ -1,0 +1,85 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'model_comparison_18'
+[my_likelihood] Initialized external likelihood.
+[polychord] Importing *local* PolyChord from '/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite'.
+[polychord] Storing raw PolyChord output in 'chains/model_comparison_18_polychord_raw'.
+[model] Measuring speeds... (this may take a few seconds)
+[model] Setting measured speeds (per sec): {my_likelihood: 2070.0}
+[polychord] Parameter blocks and their oversampling factors:
+[polychord] * 1 : ['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'y0', 'y1', 'y2', 'y3', 'y4', 'y5', 'y6', 'y7', 'y8', 'y9']
+[polychord] Initialized!
+[polychord] Calling PolyChord...
+PolyChord: MPI is already initilised, not initialising, and will not finalize
+
+PolyChord: Next Generation Nested Sampling
+copyright: Will Handley, Mike Hobson & Anthony Lasenby
+  version: 1.20.0
+  release: 1st June 2021
+    email: wh260@mrao.cam.ac.uk
+
+Run Settings
+nlive    :     100
+nDims    :      18
+nDerived :       2
+Doing Clustering
+Synchronous parallelisation
+Generating equally weighted posteriors
+Generating weighted posteriors
+Clustering on posteriors
+Writing a resume file to chains/model_comparison_18_polychord_raw/model_comparison_18.resume
+
+generating live points
+
+
+all live points generated
+
+number of repeats:           36
+started sampling
+
+________________
+lives      |100 |
+phantoms   | 35 |
+posteriors |901 |
+equals     |  2 |
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+ncluster   =       1 /       1
+ndead      =                 901
+nposterior =                 901
+nequals    =                   1
+nlike      =                1042
+<nlike>    =           0.42   (           0.01 per slice )
+log(Z)     =         -270.65 +/-  0.71
+log(Z_1)   =         -270.65 +/-  0.71 (still evaluating)
+
+
+
+[exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite/build/lib.linux-x86_64-3.8/pypolychord/polychord.py", line 177, in wrap_prior
+    theta[:] = prior(cube)
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/cobaya/samplers/polychord/polychord.py", line 225, in prior
+    theta[i] = self.model.prior.pdf[i].ppf(xi)
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/scipy/stats/_distn_infrastructure.py", line 465, in ppf
+    return self.dist.ppf(q, *self.args, **self.kwds)
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/scipy/stats/_distn_infrastructure.py", line 2156, in ppf
+    cond1 = (0 < q) & (q < 1)
+KeyboardInterrupt
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "run.py", line 43, in <module>
+    updated_info, sampler = run(info, test = test, debug = debug)
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/cobaya/run.py", line 158, in run
+    sampler.run()
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/cobaya/samplers/polychord/polychord.py", line 232, in run
+    self.pc.run_polychord(loglikelihood, self.nDims, self.nDerived, self.pc_settings,
+  File "/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite/build/lib.linux-x86_64-3.8/pypolychord/polychord.py", line 180, in run_polychord
+    _pypolychord.run(wrap_loglikelihood,
+  File "/home/ocn22/environments/cobaya_env/env/lib/python3.8/PolyChordLite/build/lib.linux-x86_64-3.8/pypolychord/polychord.py", line 173, in wrap_loglikelihood
+    logL, phi[:] = loglikelihood(theta)
+  File "/home/ocn22/environments/cobaya_env2/env/lib/python3.8/site-packages/cobaya/samplers/polychord/polychord.py", line 212, in loglikelihood
+    result = self.model.logposterior(params_values)
+SystemError: PyEval_EvalFrameEx returned a result with an error set
+-------------------------------------------------------------
+

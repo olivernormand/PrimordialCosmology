@@ -10,18 +10,18 @@
 
 #! sbatch directives begin here ###############################
 #! Name of the job:
-#SBATCH -J primordial_ps_ndims6
+#SBATCH -J primordial_ps
 #! Which project should be charged:
-#SBATCH -A HANDLEY-SL3-CPU
+#SBATCH -A HANDLEY-SL2-CPU
 #SBATCH -p cclake
 #! How many whole nodes should be allocated?
-#SBATCH --nodes=2
+#SBATCH --nodes=13
 #! How many (MPI) tasks will there be in total? (<= nodes*56)
 #! The Cascade Lake (cclake) nodes have 56 CPUs (cores) each and
 #! 3420 MiB of memory per CPU.
-#SBATCH --ntasks=112
+#SBATCH --ntasks=728
 #! How much wallclock time will be required?
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 #! What types of email messages do you wish to receive?
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ocn22@cam.ac.uk
@@ -60,10 +60,10 @@ module load rhel7/default-ccl              # REQUIRED - loads the basic environm
 
 #! Insert additional module load commands after this line if needed:
 module load python/3.8
-source /home/ocn22/environments/cobaya_env/env/bin/activate
+source /home/ocn22/environments/cobaya_env2/env/bin/activate
 
 #! Full path to application executable:
-application="/home/ocn22/environments/cobaya_env/env/bin/python"
+application="/home/ocn22/environments/cobaya_env2/env/bin/python"
 
 #! Run options for the application:
 options="/home/ocn22/cosmology/job_directories/primordial_ps/run.py"
